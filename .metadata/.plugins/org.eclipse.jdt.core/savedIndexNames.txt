@@ -1,0 +1,3 @@
+INDEX VERSION 1.126+D:\My Documents\GitHub\work\android_training_project_notes\.metadata\.plugins\org.eclipse.jdt.core
+1109608160.index
+1743719600.index
