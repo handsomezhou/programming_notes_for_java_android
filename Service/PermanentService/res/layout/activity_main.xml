@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.handsomezhou.permanentservice.MainActivity" >
+
+    <Button
+        android:id="@+id/start_service_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/start_service" />
+
+    <Button
+        android:id="@+id/stop_service_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/stop_service" />
+
+    <Button
+        android:id="@+id/uninstall_app_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/uninstall_app" />
+
+</LinearLayout>
