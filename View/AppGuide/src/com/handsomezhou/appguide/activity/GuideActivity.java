@@ -61,12 +61,13 @@ public class GuideActivity extends Activity implements OnPageChangeListener,OnGu
 		mGuideViewPager.setAdapter(mGuidePagerAdapter);
 		
 		
-		initDots();
+		initViewDots();
 	}
 	
 	private void initListener(){
 		mGuideViewPager.setOnPageChangeListener(this);
 		
+		initListenerDots();
 	}
 
 	@Override
@@ -88,7 +89,7 @@ public class GuideActivity extends Activity implements OnPageChangeListener,OnGu
 		
 	}
 	
-	private void initDots(){
+	private void initViewDots(){
 		LinearLayout linearLayout=(LinearLayout) findViewById(R.id.ll);
 		mDots=new ImageView[mViews.size()];
 		
@@ -98,6 +99,26 @@ public class GuideActivity extends Activity implements OnPageChangeListener,OnGu
 		}
 		mCurrentIndex = 0;
 		mDots[mCurrentIndex].setEnabled(false);
+		
+		return;
+	}
+	
+	private void initListenerDots(){
+		int dotsCount=mDots.length;
+		for(int i=0; i<dotsCount; i++){
+			mDots[i].setTag(i);
+			mDots[i].setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					int position=(Integer) v.getTag();
+					setCurrentDot(position);
+					mGuideViewPager.setCurrentItem(position);
+				}
+			});
+		}
+		
+		return;
 	}
 	
 	private void setCurrentDot(int position) {

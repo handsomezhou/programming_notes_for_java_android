@@ -10,6 +10,7 @@ public class DataStoreManage {
 	
 	public static void setGuideFirstIn(Context context,boolean firstIn){
 		SharedPreferences preferences = context.getSharedPreferences(SHAREDPREFERENCES_GUIDE, Context.MODE_PRIVATE);
+		//SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 		
 		Editor editor = preferences.edit();
 		editor.putBoolean(KEY_GUIDE_FIRST_IN, firstIn);
