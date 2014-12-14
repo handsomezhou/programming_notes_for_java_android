@@ -1,4 +1,4 @@
-android_training_project_notes
+programming_notes_for_java_android
 ==============================
 
-Android study notes
+Jave&Android study notes
