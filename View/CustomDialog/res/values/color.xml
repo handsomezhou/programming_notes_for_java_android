@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#ffffffff</color>
+    <color name="white_transparent">#00ffffff</color>
+    <!-- <color name="white_smoke">#fff5f5f5</color> -->
+    <color name="antique_white1">#ffffefdb</color>
+    <color name="black">#ff000000</color>
+
+</resources>
