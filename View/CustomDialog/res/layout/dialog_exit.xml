@@ -24,7 +24,7 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/icon_image_view"
             android:gravity="center"
-            android:text="@string/title"
+            android:text="@string/exit_dialog_title"
             android:textSize="@dimen/dialog_title" >
         </TextView>
     </RelativeLayout>
@@ -44,7 +44,7 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/dialog_message_margin_left"
         android:gravity="center_vertical"
-        android:text="@string/message"
+        android:text="@string/exit_dialog_message"
         android:textSize="@dimen/dialog_message" >
     </TextView>
 
@@ -64,13 +64,13 @@
 
         <Button
             android:id="@+id/cancel_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:background="@drawable/dialog_action_btn_selector"
             android:gravity="center"
-            android:text="@string/cancel"
+            android:text="@string/exit_dialog_cancel"
             android:textSize="@dimen/dialog_action_text" />
 
         <View
@@ -81,13 +81,13 @@
 
         <Button
             android:id="@+id/ok_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:background="@drawable/dialog_action_btn_selector"
             android:gravity="center"
-            android:text="@string/ok"
+            android:text="@string/exit_dialog_ok"
             android:textSize="@dimen/dialog_action_text" />
     </LinearLayout>
 

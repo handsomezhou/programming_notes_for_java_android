@@ -34,13 +34,13 @@ public class MainActivity extends Activity implements OnExitDialog{
 	
 	/*Start:OnExitDialog*/
 	@Override
-	public void onOk() {
+	public void onExitDialogOk() {
 		Toast.makeText(mContext, "onOk", Toast.LENGTH_SHORT).show();
 		this.finish();
 	}
 
 	@Override
-	public void onCancel() {
+	public void onExitDialogCancel() {
 		Toast.makeText(mContext, "onCancel", Toast.LENGTH_SHORT).show();
 	}
 	/*End:OnExitDialog*/

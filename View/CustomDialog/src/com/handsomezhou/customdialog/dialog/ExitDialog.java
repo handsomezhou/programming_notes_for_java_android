@@ -15,26 +15,26 @@ public class ExitDialog {
 	private AlertDialog mAlertDialog;
 	private OnExitDialog mOnExitDialog;
 	
-	//Start:mExitDialog Data
+	//Start: mExitDialog Data
 	private int mIcon;
 	private String mTitle;
 	private String mMessage;
 	private String mOk;
 	private String mCancel;
-	//End:mExitDialog Data
+	//End: mExitDialog Data
 	
 	private View mExitDialogLayout;
 	private int mViewSpacingLeft=0;
 	private int mViewSpacingTop=0;
 	private int mViewSpacingRight=0;
 	private int mViewSpacingBottom=0;
-	//Start:mExitDialog View
+	//Start: mExitDialog View
 	private ImageView mIconIv;
 	private TextView mTitleTv;
 	private TextView mMessageTv;
 	private Button mOkBtn;
 	private Button mCancelBtn;
-	//End:mExitDialog View
+	//End: mExitDialog View
 	
 
 	public ExitDialog(Context context) {
@@ -47,8 +47,8 @@ public class ExitDialog {
 	}
 
 	public interface OnExitDialog{
-		void onOk();
-		void onCancel();
+		void onExitDialogOk();
+		void onExitDialogCancel();
 	}
 	
 	public AlertDialog getAlertDialog() {
@@ -67,6 +67,10 @@ public class ExitDialog {
 		mOnExitDialog = onExitDialog;
 	}
 
+	public void setCanceledOnTouchOutside(boolean cancel){
+		mAlertDialog.setCanceledOnTouchOutside(cancel);
+	}
+	
 	public int getIcon() {
 		return mIcon;
 	}
@@ -200,7 +204,7 @@ public class ExitDialog {
 	private void clickOkBtn(){
 		
 		if(null!=mOnExitDialog){
-			mOnExitDialog.onOk();
+			mOnExitDialog.onExitDialogOk();
 		}
 		mAlertDialog.dismiss();
 		
@@ -210,13 +214,11 @@ public class ExitDialog {
 	private void clickCancelBtn(){
 		
 		if(null!=mOnExitDialog){
-			mOnExitDialog.onCancel();
+			mOnExitDialog.onExitDialogCancel();
 		}
 		
 		mAlertDialog.dismiss();
 		
 		return;
-	}
-	
-	
+	}	
 }
