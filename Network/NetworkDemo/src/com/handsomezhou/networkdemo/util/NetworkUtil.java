@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
+import android.util.Log;
+import android.widget.Toast;
 
 /**
  * Reference:
@@ -11,6 +13,7 @@ import android.telephony.TelephonyManager;
  * -type-on-android
  * */
 public class NetworkUtil {
+	private final static String TAG="NetworkUtil";
 	public enum NETWORK_TYPE {
 		NETWORKTYPE_INVALID,
 		/* NETWORKTYPE_WAP , */
@@ -92,6 +95,7 @@ public class NetworkUtil {
 			if (ConnectivityManager.TYPE_WIFI == type) {
 				networkType = NETWORK_TYPE.NETWORKTYPE_WIFI;
 			} else if (ConnectivityManager.TYPE_MOBILE == type) {
+				Toast.makeText(context, "networkType:["+networkInfo.getSubtypeName()+"]",Toast.LENGTH_LONG).show();
 				networkType = NetworkUtil.getMobileNetWorkType(networkInfo
 						.getSubtype());
 			}
@@ -148,6 +152,7 @@ public class NetworkUtil {
 		case TelephonyManager.NETWORK_TYPE_GPRS: // ~ 100 kbps
 		case TelephonyManager.NETWORK_TYPE_CDMA: // ~ 14-64 kbps
 		case TelephonyManager.NETWORK_TYPE_IDEN: // ~25 kbps // API level 8
+		case 16:								//TelephonyManager.NETWORK_TYPE_GSM://16
 		// 2.9G:
 		case TelephonyManager.NETWORK_TYPE_EDGE: // ~ 50-100 kbps
 		case TelephonyManager.NETWORK_TYPE_1xRTT:// ~ 50-100 kbps
@@ -159,6 +164,7 @@ public class NetworkUtil {
 		case TelephonyManager.NETWORK_TYPE_EVDO_0:// ~ 400-1000 kbps
 		case TelephonyManager.NETWORK_TYPE_EVDO_A:// ~ 600-1400 kbps
 		case TelephonyManager.NETWORK_TYPE_HSPA: // ~ 700-1700 kbps
+		case 17://TelephonyManager.xxx China Mobile 3G
 			networkType = NETWORK_TYPE.NETWORKTYPE_3G;
 			break;
 		// 4G:
@@ -178,6 +184,9 @@ public class NetworkUtil {
 			networkType = NETWORK_TYPE.NETWORKTYPE_UNKNOW;
 			break;
 		}
+		
+		Log.i(TAG, "subType["+subType+"]");
+		
 		return networkType;
 	}
 
