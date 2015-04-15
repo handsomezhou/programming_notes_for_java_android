@@ -90,8 +90,7 @@ public class MainActivity extends Activity implements OnNetworkChange {
 		return;
 	}
 
-	private void updateNetworkState() {
-		NETWORK_TYPE networkType = NetworkUtil.getNetWorkType(mContext);
-		mNetworkStateTipsView.updateView(networkType);
+	private void updateNetworkState(){
+		mNetworkStateTipsView.updateView();
 	}
 }

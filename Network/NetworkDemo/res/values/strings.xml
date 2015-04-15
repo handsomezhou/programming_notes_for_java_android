@@ -4,11 +4,12 @@
     <string name="app_name">NetworkDemo</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="network_type_invalid">网络不可用</string>
-    <string name="network_type_2g">当前网络:2G</string>
-    <string name="network_type_3g">当前网络:3G</string>
-    <string name="network_type_4g_no_less">当前网络:4G及之上</string>
-    <string name="network_type_wifi">当前网络:wifi</string>
-    <string name="network_type_unknow">当前网络:未知</string>
+    <string name="network_type_invalid">不可用</string>
+    <string name="network_type_2g">2G</string>
+    <string name="network_type_3g">3G</string>
+    <string name="network_type_4g_no_less">4G及之上</string>
+    <string name="network_type_wifi">wifi</string>
+    <string name="network_type_unknow">未知</string>
+    <string name="current_network_type">当前网络:</string>
 
 </resources>

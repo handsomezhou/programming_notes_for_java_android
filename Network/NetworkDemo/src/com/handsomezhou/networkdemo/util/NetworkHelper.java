@@ -2,7 +2,7 @@ package com.handsomezhou.networkdemo.util;
 
 import android.content.Context;
 
-import com.handsomezhou.networkdemo.application.NetWorkDemoApplication;
+import  com.handsomezhou.networkdemo.application.NetWorkDemoApplication;
 import com.handsomezhou.networkdemo.util.NetworkUtil.NETWORK_TYPE;
 
 public class NetworkHelper {
