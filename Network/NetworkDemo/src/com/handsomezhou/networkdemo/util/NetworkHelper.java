@@ -1,6 +1,7 @@
 package com.handsomezhou.networkdemo.util;
 
 import android.content.Context;
+import android.telephony.TelephonyManager;
 
 import  com.handsomezhou.networkdemo.application.NetWorkDemoApplication;
 import com.handsomezhou.networkdemo.util.NetworkUtil.NETWORK_TYPE;
@@ -9,6 +10,7 @@ public class NetworkHelper {
 	private static NetworkHelper mInstance=null;
 	private Context mContext;
 	private OnNetworkChange mOnNetworkChange;
+	private int mCallState;//
 
 	public static NetworkHelper getInstance(){
 		if (null == mInstance) {
@@ -19,7 +21,7 @@ public class NetworkHelper {
 	}
 	
 	public  interface OnNetworkChange{
-		void onNetworkChange(NETWORK_TYPE networkType);
+		void onNetworkChange(NETWORK_TYPE networkType, int mCallState);
 		
 
 	};
@@ -28,7 +30,7 @@ public class NetworkHelper {
 		if (null != mOnNetworkChange) {
 			NETWORK_TYPE networkType = NetworkUtil.getNetWorkType(mContext);
 
-			mOnNetworkChange.onNetworkChange(networkType);
+			mOnNetworkChange.onNetworkChange(networkType,mCallState);
 
 		}
 	}
@@ -42,6 +44,14 @@ public class NetworkHelper {
 		mOnNetworkChange = onNetworkChange;
 	}
 	
+	public int getCallState() {
+		return mCallState;
+	}
+
+	public void setCallState(int callState) {
+		mCallState = callState;
+	}
+	
 	private NetworkHelper(Context context){
 		mContext = context.getApplicationContext();
 		initNetworkHelper();
@@ -50,7 +60,7 @@ public class NetworkHelper {
 	}
 	
 	private void initNetworkHelper(){
-		
+		setCallState(TelephonyManager.CALL_STATE_IDLE);
 		return;
 	}
 	

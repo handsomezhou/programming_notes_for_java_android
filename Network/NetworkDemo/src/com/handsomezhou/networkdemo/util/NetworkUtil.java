@@ -109,25 +109,7 @@ public class NetworkUtil {
 		}
 
 		return networkType;
-	}
-
-	public static String getNetWorkTypeName(Context context) {
-		String networkTypeName = null;
-		NetworkInfo networkInfo = NetworkUtil.getNetworkInfo(context);
-		if (networkInfo != null && networkInfo.isConnected()) {
-			if (networkInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
-				networkTypeName = "[" + networkInfo.getTypeName() + "]" + "["
-						+ networkInfo.getSubtype() + "]" + "["
-						+ networkInfo.getSubtypeName() + "]";
-			} else {
-				networkTypeName = "[" + networkInfo.getTypeName() + "]";
-			}
-		} else {
-			networkTypeName = context.getString(R.string.network_type_invalid);
-		}
-
-		return networkTypeName;
-	}
+	}	
 
 	//public static boolean 
 	/**
@@ -169,6 +151,10 @@ public class NetworkUtil {
 		return fastMobileNetwork;
 	}
 
+	/**
+	 * During the call does not come down.(wifi, NETWORK_TYPE_LTE,NETWORK_TYPE_HSPAP)
+	 * 
+	 * */
 	private static NETWORK_TYPE getMobileNetWorkType(int subType) {
 		NETWORK_TYPE networkType = NETWORK_TYPE.NETWORKTYPE_2G;
 
@@ -211,5 +197,4 @@ public class NetworkUtil {
 
 		return networkType;
 	}
-
 }

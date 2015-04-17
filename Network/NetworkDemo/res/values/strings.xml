@@ -11,5 +11,10 @@
     <string name="network_type_wifi">wifi</string>
     <string name="network_type_unknow">未知</string>
     <string name="current_network_type">当前网络:</string>
+    
+    <string name="call_state">通话状态:</string>
+    <string name="call_state_ringing">响铃</string>
+    <string name="call_state_idle">空闲</string>
+    <string name="call_state_offhook">通话中</string>
 
 </resources>

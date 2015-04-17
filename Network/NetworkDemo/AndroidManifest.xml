@@ -9,6 +9,7 @@
         android:targetSdkVersion="14" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
           android:name="com.handsomezhou.networkdemo.application.NetWorkDemoApplication"
@@ -25,6 +26,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+         <service
+            android:name="com.handsomezhou.networkdemo.service.NetworkDemoService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.handsomezhou.networkdemo.service.NETWORK_DEMO_SERVICE" />
+            </intent-filter>
+        </service>
 
        <!--  <receiver android:name="com.handsomezhou.networkdemo.broadcast.NetworkChangeReceiver" >
             <intent-filter >

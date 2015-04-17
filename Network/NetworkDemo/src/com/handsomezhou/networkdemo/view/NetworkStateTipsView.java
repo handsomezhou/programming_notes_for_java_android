@@ -1,7 +1,9 @@
 package com.handsomezhou.networkdemo.view;
 
 import com.handsomezhou.networkdemo.R;
+import com.handsomezhou.networkdemo.util.NetworkHelper;
 import com.handsomezhou.networkdemo.util.NetworkUtil;
+import com.handsomezhou.networkdemo.util.StringUtil;
 import com.handsomezhou.networkdemo.util.NetworkUtil.NETWORK_TYPE;
 
 import android.content.Context;
@@ -38,39 +40,19 @@ public class NetworkStateTipsView extends RelativeLayout {
 	}
 
 	public void updateView(){
-		String  networkTypeName = NetworkUtil.getNetWorkTypeName(mContext);
+		//String  networkTypeName = NetworkUtil.getNetWorkTypeName(mContext);
 		//updateView(networkType);
-		mMessageTv.setText(networkTypeName);
+		NETWORK_TYPE networkType=NetworkUtil.getNetWorkType(mContext);
+		String currentNetworkType=StringUtil.getNetworkType(mContext,networkType);
+		String currentCallState=StringUtil.getCallState(mContext, NetworkHelper.getInstance().getCallState());
+		mMessageTv.setText(currentNetworkType+";"+currentCallState);
 	}
-	public void updateView(NETWORK_TYPE networkType) {
-		String currentNetworkType=(String) mContext.getText(R.string.current_network_type);
-		switch (networkType) {
-		case NETWORKTYPE_INVALID:
-			mMessageTv.setText(currentNetworkType+mContext.getText(R.string.network_type_invalid));
-			break;
-
-		case NETWORKTYPE_2G:
-			mMessageTv.setText(currentNetworkType+mContext.getText(R.string.network_type_2g));
-			break;
-
-		case NETWORKTYPE_3G:
-			mMessageTv.setText(currentNetworkType+mContext
-					.getText(R.string.network_type_3g));
-			break;
-
-		case NETWORKTYPE_4G_NO_LESS:
-			mMessageTv.setText(currentNetworkType+mContext
-					.getText(R.string.network_type_4g_no_less));
-			break;
-		case NETWORKTYPE_WIFI:
-			mMessageTv.setText(mContext.getText(R.string.network_type_wifi));
-			break;
-
-		default:
-			mMessageTv.setText(currentNetworkType+mContext.getText(R.string.network_type_unknow));
-
-			break;
-		}
+	
+	public void updateView(NETWORK_TYPE networkType, int callState) {
+		String currentNetworkType=StringUtil.getNetworkType(mContext, networkType);
+		String currentCallState=StringUtil.getCallState(mContext, callState);
+		mMessageTv.setText(currentNetworkType+";"+currentCallState);
+		
 	}
 
 	private void gotoSetting() {
