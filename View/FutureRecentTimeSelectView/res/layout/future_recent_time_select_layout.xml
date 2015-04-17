@@ -2,24 +2,46 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal" >
+    android:orientation="vertical" >
 
-    <kankan.wheel.widget.WheelView
-        android:id="@+id/day_wheel_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+    <View
+        android:id="@+id/divider_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black" />
 
-    <kankan.wheel.widget.WheelView
-        android:id="@+id/hour_wheel_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
-    <kankan.wheel.widget.WheelView
-        android:id="@+id/minute_wheel_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        <Button
+            android:id="@+id/cancel_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/dialog_action_btn_selector"
+            android:gravity="center"
+            android:padding="@dimen/dialog_action_padding"
+            android:text="@string/exit_dialog_cancel"
+            android:textSize="@dimen/dialog_action_text" />
+
+        <Button
+            android:id="@+id/ok_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/dialog_action_btn_selector"
+            android:gravity="center"
+            android:padding="@dimen/dialog_action_padding"
+            android:text="@string/exit_dialog_ok"
+            android:textSize="@dimen/dialog_action_text" />
+    </RelativeLayout>
+
+    <com.handsomezhou.futurerecenttimeselect.view.FutureRecentTimeView
+        android:id="@+id/future_recent_time_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
