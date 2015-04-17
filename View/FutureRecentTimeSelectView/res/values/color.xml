@@ -5,5 +5,7 @@
     <color name="white">#ffffffff</color>
     <color name="white_transparent">#00ffffff</color>
     <color name="antique_white1">#ffffefdb</color>
+    <color name="cadet_blue1">#6698F5FF</color>
+    <color name="dark_orange">#FF8C00</color>
 
 </resources>

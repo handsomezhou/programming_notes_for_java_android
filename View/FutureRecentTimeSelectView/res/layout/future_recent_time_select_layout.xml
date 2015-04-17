@@ -7,8 +7,8 @@
     <View
         android:id="@+id/divider_view"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/black" />
+        android:layout_height="2dp"
+        android:background="@color/dark_orange" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -24,6 +24,7 @@
             android:gravity="center"
             android:padding="@dimen/dialog_action_padding"
             android:text="@string/exit_dialog_cancel"
+            android:textColor="@color/dark_orange"
             android:textSize="@dimen/dialog_action_text" />
 
         <Button
@@ -36,6 +37,7 @@
             android:gravity="center"
             android:padding="@dimen/dialog_action_padding"
             android:text="@string/exit_dialog_ok"
+            android:textColor="@color/dark_orange"
             android:textSize="@dimen/dialog_action_text" />
     </RelativeLayout>
 

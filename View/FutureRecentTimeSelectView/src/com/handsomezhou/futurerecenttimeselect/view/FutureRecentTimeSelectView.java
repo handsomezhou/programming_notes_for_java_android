@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 public class FutureRecentTimeSelectView extends LinearLayout implements OnFutureRecentTimeView{
 	private static final String TAG="FutureRecentTimeSelectView";
 	private Context mContext;
+	private OnFutureRecentTimeSelectView mOnFutureRecentTimeSelectView;
 	private View mFutureRecentTimeSelectView;
 	/*Start: mFutureRecentTimeSelectView*/
 	private Button mOkBtn;
@@ -30,6 +31,8 @@ public class FutureRecentTimeSelectView extends LinearLayout implements OnFuture
 	}
 
 	public interface OnFutureRecentTimeSelectView{
+		void onFutureRecentTimeSelectViewCancel();
+		void onFutureRecentTimeSelectViewOk(int dayValue,int hourValue,int minuteValue);
 		void onTimeChanged(int dayValue,int hourValue,int minuteValue);
 	}
 	
@@ -37,9 +40,19 @@ public class FutureRecentTimeSelectView extends LinearLayout implements OnFuture
 	@Override
 	public void onTimeChanged(int dayValue, int hourValue, int minuteValue) {
 		Log.i(TAG,"dayValue["+dayValue+"]hourValue["+ hourValue+"]minuteValue["+minuteValue+"]");
-		
+		if(null!=mOnFutureRecentTimeSelectView){
+			mOnFutureRecentTimeSelectView.onTimeChanged(dayValue, hourValue, minuteValue);
+		}
 	}
 	/*End: OnFutureRecentTimeView*/
+	
+	public OnFutureRecentTimeSelectView getOnFutureRecentTimeSelectView() {
+		return mOnFutureRecentTimeSelectView;
+	}
+
+	public void setOnFutureRecentTimeSelectView(OnFutureRecentTimeSelectView onFutureRecentTimeSelectView) {
+		this.mOnFutureRecentTimeSelectView = onFutureRecentTimeSelectView;
+	}
 	
 	private void initData() {
 
@@ -63,8 +76,7 @@ public class FutureRecentTimeSelectView extends LinearLayout implements OnFuture
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
+				clickOk();
 			}
 		});
 		
@@ -72,9 +84,29 @@ public class FutureRecentTimeSelectView extends LinearLayout implements OnFuture
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
+				clickCancel();
 			}
 		});
+	}
+	
+	private void clickOk(){
+		if(null!=mOnFutureRecentTimeSelectView){
+			
+			int dayValue=mFutureRecentTimeView.getDayValue();
+			int hourValue=mFutureRecentTimeView.getHourValue();
+			int minuteValue=mFutureRecentTimeView.getMinuteValue();
+			
+			mOnFutureRecentTimeSelectView.onFutureRecentTimeSelectViewOk(dayValue, hourValue, minuteValue);
+		}
+		
+		return;
+	}
+	
+	private void clickCancel(){
+		if(null!=mOnFutureRecentTimeSelectView){
+			mOnFutureRecentTimeSelectView.onFutureRecentTimeSelectViewCancel();
+		}
+		
+		return;
 	}
 }

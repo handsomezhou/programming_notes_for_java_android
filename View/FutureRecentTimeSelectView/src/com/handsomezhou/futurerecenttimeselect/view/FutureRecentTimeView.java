@@ -64,6 +64,24 @@ public class FutureRecentTimeView extends LinearLayout{
 		mOnFutureRecentTimeView = onFutureRecentTimeView;
 	}
 	
+	public int getDayValue(){
+		int dayValue=TimeUtil.dayPoint[mDayWheelView.getCurrentItem()];
+		
+		return dayValue;
+	}
+	
+	public int getHourValue(){
+		int hourValue=TimeUtil.hourPoint[mHourWheelView.getCurrentItem()];
+		
+		return hourValue;
+	}
+	
+	public int getMinuteValue(){
+		int minuteValue=TimeUtil.minutePoint[mMinuteWheelView.getCurrentItem()];
+		
+		return minuteValue;
+	}
+	
 	private void initData(){
 		mDayStrings=mContext.getResources().getStringArray(R.array.day_relative_to_today);
 		//mDayList=Arrays.asList(dayStrings);
@@ -233,22 +251,32 @@ public class FutureRecentTimeView extends LinearLayout{
 					int minuteCurrent = (minute+TimeUtil.MINUTE_MIN_APPOINTMENT_TIME);
 					hourCorrectTheItem = (hour_of_day + minuteCurrent/TimeUtil.MINUTE_PER_HOUR);
 					minuteCorrectTheItem = ((minuteCurrent%TimeUtil.MINUTE_PER_HOUR)/TimeUtil.MINUTE_INTERVAL);
+					updateView(dayCorrectTheItem, hourCorrectTheItem, minuteCorrectTheItem);
 				}else{
 					if((minute+TimeUtil.MINUTE_MIN_APPOINTMENT_TIME)>=TimeUtil.minutePoint[minuteCurrentItem]){
 						int minuteCurrent = (minute+TimeUtil.MINUTE_MIN_APPOINTMENT_TIME);
 						hourCorrectTheItem = (hour_of_day + minuteCurrent/TimeUtil.MINUTE_PER_HOUR);
 						minuteCorrectTheItem = ((minuteCurrent%TimeUtil.MINUTE_PER_HOUR)/TimeUtil.MINUTE_INTERVAL);
+						updateView(dayCorrectTheItem, hourCorrectTheItem, minuteCorrectTheItem);
 					}
 				}
 			
-				updateView(dayCorrectTheItem, hourCorrectTheItem, minuteCorrectTheItem);
+				
+			}else if((hour_of_day+1)==TimeUtil.hourPoint[hourCurrentItem]){
+				if((minute+TimeUtil.MINUTE_MIN_APPOINTMENT_TIME)>=TimeUtil.minutePoint[minuteCurrentItem]+TimeUtil.MINUTE_PER_HOUR){
+					int minuteCurrent = (minute+TimeUtil.MINUTE_MIN_APPOINTMENT_TIME);
+					hourCorrectTheItem = (hour_of_day + minuteCurrent/TimeUtil.MINUTE_PER_HOUR);
+					minuteCorrectTheItem = ((minuteCurrent%TimeUtil.MINUTE_PER_HOUR)/TimeUtil.MINUTE_INTERVAL);
+					updateView(dayCorrectTheItem, hourCorrectTheItem, minuteCorrectTheItem);
+				}
+				
 			}
 		}
 		
 		if(null!=mOnFutureRecentTimeView){
-			int dayValue=TimeUtil.dayPoint[mDayWheelView.getCurrentItem()];
-			int hourValue=TimeUtil.hourPoint[mHourWheelView.getCurrentItem()];
-			int minuteValue=TimeUtil.minutePoint[mMinuteWheelView.getCurrentItem()];
+			int dayValue=this.getDayValue();
+			int hourValue=this.getHourValue();
+			int minuteValue=this.getMinuteValue();
 			Log.i(TAG, "dayValue["+dayValue+"]hourValue["+hourValue+"]minuteValue["+minuteValue+"]");
 			mOnFutureRecentTimeView.onTimeChanged(dayValue, hourValue, minuteValue);
 		}
