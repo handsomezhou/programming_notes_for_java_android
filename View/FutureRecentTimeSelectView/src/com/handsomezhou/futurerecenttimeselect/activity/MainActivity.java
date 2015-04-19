@@ -25,6 +25,14 @@ public class MainActivity extends Activity implements OnFutureRecentTimeSelectVi
 		initListener();
 	}
 	
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		mFutureRecentTimeSelectView.updateView();
+	}
+
+
 	/*Start: OnFutureRecentTimeSelectView*/
 	@Override
 	public void onFutureRecentTimeSelectViewCancel() {

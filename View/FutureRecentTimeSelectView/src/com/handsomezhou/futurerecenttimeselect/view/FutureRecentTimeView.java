@@ -11,7 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.handsomezhou.futurerecenttimeselect.util.TimeUtil;
+import com.handsomezhou.futurerecenttimeselect.model.TimeItemIndex;
+import com.handsomezhou.futurerecenttimeselect.util.TimeItemUtil;
 import com.handsomezhou.futurerecenttimeselectview.R;
 
 public class FutureRecentTimeView extends LinearLayout{
@@ -35,14 +36,8 @@ public class FutureRecentTimeView extends LinearLayout{
 	private WheelView mHourWheelView;
 	private WheelView mMinuteWheelView;
 	
-	private int mDayLastItem;  
-	private int mDayCurrentItem;
-	
-	private int mHourLastItem;  
-	private int mHourCurrentItem;
-	
-	private int mMinuteLastItem;  
-	private int mMinuteCurrentItem;
+	private TimeItemIndex mLastTimeItem;
+	private TimeItemIndex mCurrentItem;
 	
 	public interface OnFutureRecentTimeView{
 		void onTimeChanged(int dayValue,int hourValue,int minuteValue);
@@ -65,19 +60,19 @@ public class FutureRecentTimeView extends LinearLayout{
 	}
 	
 	public int getDayValue(){
-		int dayValue=TimeUtil.dayPoint[mDayWheelView.getCurrentItem()];
+		int dayValue=TimeItemUtil.dayPoint[mDayWheelView.getCurrentItem()];
 		
 		return dayValue;
 	}
 	
 	public int getHourValue(){
-		int hourValue=TimeUtil.hourPoint[mHourWheelView.getCurrentItem()];
+		int hourValue=TimeItemUtil.hourPoint[mHourWheelView.getCurrentItem()];
 		
 		return hourValue;
 	}
 	
 	public int getMinuteValue(){
-		int minuteValue=TimeUtil.minutePoint[mMinuteWheelView.getCurrentItem()];
+		int minuteValue=TimeItemUtil.minutePoint[mMinuteWheelView.getCurrentItem()];
 		
 		return minuteValue;
 	}
@@ -92,7 +87,13 @@ public class FutureRecentTimeView extends LinearLayout{
 		mMinuteStrings=mContext.getResources().getStringArray(R.array.minute);
 		//mMinuteList=Arrays.asList(minuteStrings);
 		
+		mLastTimeItem=new TimeItemIndex();
+		mCurrentItem=new TimeItemIndex();
 		return;
+	}
+	
+	public void updateView(){
+		correctTheTime();
 	}
 	
 	private void initView(){
@@ -135,6 +136,8 @@ public class FutureRecentTimeView extends LinearLayout{
 		mMinuteWheelView.addScrollingListener(minuteWheelViewScrollListener);
 		
 		correctTheTime();
+		
+		
 		return;
 	}
 	
@@ -156,7 +159,7 @@ public class FutureRecentTimeView extends LinearLayout{
 				return;
 			}
 			//Log.i(TAG, "onScrollingStarted");
-			mDayLastItem=wheel.getCurrentItem();
+			mLastTimeItem.setDayItemIndex(wheel.getCurrentItem());
 		}
 		
 		@Override
@@ -165,8 +168,8 @@ public class FutureRecentTimeView extends LinearLayout{
 				return;
 			}
 			
-			mDayCurrentItem=wheel.getCurrentItem();
-			if(mDayCurrentItem==mDayLastItem){
+			mCurrentItem.setDayItemIndex(wheel.getCurrentItem());
+			if(mCurrentItem.getDayItemIndex()==mLastTimeItem.getDayItemIndex()){
 				return;
 			}
 			
@@ -183,7 +186,7 @@ public class FutureRecentTimeView extends LinearLayout{
 				return;
 			}
 			
-			mHourLastItem=wheel.getCurrentItem();
+			mLastTimeItem.setHourItemIndex(wheel.getCurrentItem());
 		}
 		
 		@Override
@@ -191,8 +194,9 @@ public class FutureRecentTimeView extends LinearLayout{
 			if(null==wheel){
 				return;
 			}
-			mHourCurrentItem=wheel.getCurrentItem();
-			if(mHourCurrentItem==mHourLastItem){
+		
+			mCurrentItem.setHourItemIndex(wheel.getCurrentItem());
+			if(mCurrentItem.getHourItemIndex()==mLastTimeItem.getHourItemIndex()){
 				return;
 			}
 			
@@ -210,7 +214,7 @@ public class FutureRecentTimeView extends LinearLayout{
 				return;
 			}
 			
-			mMinuteLastItem=wheel.getCurrentItem();
+			mLastTimeItem.setMinuteItemIndex(wheel.getCurrentItem());
 			
 		}
 		
@@ -219,8 +223,8 @@ public class FutureRecentTimeView extends LinearLayout{
 			if(null==wheel){
 				return;
 			}
-			mMinuteCurrentItem=wheel.getCurrentItem();
-			if(mMinuteCurrentItem==mMinuteLastItem){
+			mCurrentItem.setMinuteItemIndex(wheel.getCurrentItem());
+			if(mCurrentItem.getMinuteItemIndex()==mLastTimeItem.getMinuteItemIndex()){
 				return;
 			}
 			
@@ -229,65 +233,33 @@ public class FutureRecentTimeView extends LinearLayout{
 		}
 	};
 	
-	private void correctTheTime(){	
-		int dayCurrentItem=mDayWheelView.getCurrentItem();	
-		int hourCurrentItem=mHourWheelView.getCurrentItem();
-		int minuteCurrentItem=mMinuteWheelView.getCurrentItem();
+	private void correctTheTime() {
+		TimeItemIndex currentItem = null;
+
+		currentItem = new TimeItemIndex();
+		currentItem.setDayItemIndex(mDayWheelView.getCurrentItem());
+		currentItem.setHourItemIndex(mHourWheelView.getCurrentItem());
+		currentItem.setMinuteItemIndex(mMinuteWheelView.getCurrentItem());
 		
-		int dayCorrectTheItem=dayCurrentItem;
-		int hourCorrectTheItem=hourCurrentItem;
-		int minuteCorrectTheItem=minuteCurrentItem;
+		Log.i(TAG,currentItem.getDayItemIndex()+";"+currentItem.getHourItemIndex()+";" +currentItem.getMinuteItemIndex());
+		TimeItemIndex correctItem=TimeItemUtil.correctTheTimeItem(currentItem);
 		
-		
-		int hour_of_day=TimeUtil.getHourOfDay();
-		int minute=TimeUtil.getMinute();
-		Log.i(TAG, "hour_of_day["+hour_of_day+"]minute["+minute+"]");
-		Log.i(TAG, "dayCurrentItem updateView before["+dayCurrentItem+"]hourCurrentItem["+hourCurrentItem+"]minuteCurrentItem["+minuteCurrentItem+"]");
-		if(dayCurrentItem==0){
-			Log.i(TAG,"hourCurrentItem["+hourCurrentItem );
-			
-			if(hour_of_day>=TimeUtil.hourPoint[hourCurrentItem]){
-				if(hour_of_day>TimeUtil.hourPoint[hourCurrentItem]){
-					int minuteCurrent = (minute+TimeUtil.MINUTE_MIN_APPOINTMENT_TIME);
-					hourCorrectTheItem = (hour_of_day + minuteCurrent/TimeUtil.MINUTE_PER_HOUR);
-					minuteCorrectTheItem = ((minuteCurrent%TimeUtil.MINUTE_PER_HOUR)/TimeUtil.MINUTE_INTERVAL);
-					updateView(dayCorrectTheItem, hourCorrectTheItem, minuteCorrectTheItem);
-				}else{
-					if((minute+TimeUtil.MINUTE_MIN_APPOINTMENT_TIME)>=TimeUtil.minutePoint[minuteCurrentItem]){
-						int minuteCurrent = (minute+TimeUtil.MINUTE_MIN_APPOINTMENT_TIME);
-						hourCorrectTheItem = (hour_of_day + minuteCurrent/TimeUtil.MINUTE_PER_HOUR);
-						minuteCorrectTheItem = ((minuteCurrent%TimeUtil.MINUTE_PER_HOUR)/TimeUtil.MINUTE_INTERVAL);
-						updateView(dayCorrectTheItem, hourCorrectTheItem, minuteCorrectTheItem);
-					}
-				}
-			
-				
-			}else if((hour_of_day+1)==TimeUtil.hourPoint[hourCurrentItem]){
-				if((minute+TimeUtil.MINUTE_MIN_APPOINTMENT_TIME)>=TimeUtil.minutePoint[minuteCurrentItem]+TimeUtil.MINUTE_PER_HOUR){
-					int minuteCurrent = (minute+TimeUtil.MINUTE_MIN_APPOINTMENT_TIME);
-					hourCorrectTheItem = (hour_of_day + minuteCurrent/TimeUtil.MINUTE_PER_HOUR);
-					minuteCorrectTheItem = ((minuteCurrent%TimeUtil.MINUTE_PER_HOUR)/TimeUtil.MINUTE_INTERVAL);
-					updateView(dayCorrectTheItem, hourCorrectTheItem, minuteCorrectTheItem);
-				}
-				
-			}
-		}
-		
-		if(null!=mOnFutureRecentTimeView){
-			int dayValue=this.getDayValue();
-			int hourValue=this.getHourValue();
-			int minuteValue=this.getMinuteValue();
-			Log.i(TAG, "dayValue["+dayValue+"]hourValue["+hourValue+"]minuteValue["+minuteValue+"]");
-			mOnFutureRecentTimeView.onTimeChanged(dayValue, hourValue, minuteValue);
+		Log.i(TAG,correctItem.getDayItemIndex()+";"+correctItem.getHourItemIndex()+";" +correctItem.getMinuteItemIndex());
+		if(null!=correctItem){
+			updateView(correctItem);
 		}
 	}
 	
-	private void updateView(int dayIndex, int hourIndex, int minuteIndex){
-		Log.i(TAG, "updateView...["+dayIndex+"]["+hourIndex+"]["+minuteIndex+"]");
-		mDayWheelView.setCurrentItem(dayIndex);
-		mHourWheelView.setCurrentItem(hourIndex);
-		mMinuteWheelView.setCurrentItem(minuteIndex);
-		Log.i(TAG, "updateView===["+mDayWheelView.getCurrentItem()+"]["+mHourWheelView.getCurrentItem()+"]["+mMinuteWheelView.getCurrentItem()+"]");
+	private void updateView(TimeItemIndex timeItem){
+		if(null==timeItem){
+			return;
+		}
+		
+		//Log.i(TAG, "updateView...["+timeItem.getDayItemIndex()+"]["+timeItem.getHourItemIndex()+"]["+timeItem.getMinuteItemIndex()+"]");
+		mDayWheelView.setCurrentItem(timeItem.getDayItemIndex());
+		mHourWheelView.setCurrentItem(timeItem.getHourItemIndex());
+		mMinuteWheelView.setCurrentItem(timeItem.getMinuteItemIndex());
+		//Log.i(TAG, "updateView===["+mDayWheelView.getCurrentItem()+"]["+mHourWheelView.getCurrentItem()+"]["+mMinuteWheelView.getCurrentItem()+"]");
 	}
 	
 	

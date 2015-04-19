@@ -54,6 +54,11 @@ public class FutureRecentTimeSelectView extends LinearLayout implements OnFuture
 		this.mOnFutureRecentTimeSelectView = onFutureRecentTimeSelectView;
 	}
 	
+	public void updateView(){
+		mFutureRecentTimeView.updateView();
+		return;
+	}
+	
 	private void initData() {
 
 		return;
