@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.handsomezhou.futurerecenttimeselect.model.TimeItemIndex;
+import com.handsomezhou.futurerecenttimeselect.model.TimeItemValue;
 import com.handsomezhou.futurerecenttimeselect.util.TimeItemUtil;
 import com.handsomezhou.futurerecenttimeselectview.R;
 
@@ -40,7 +41,7 @@ public class FutureRecentTimeView extends LinearLayout{
 	private TimeItemIndex mCurrentItem;
 	
 	public interface OnFutureRecentTimeView{
-		void onTimeChanged(int dayValue,int hourValue,int minuteValue);
+		void onTimeChanged(TimeItemValue timeItemValue);
 	}
 	
 	public FutureRecentTimeView(Context context, AttributeSet attrs) {

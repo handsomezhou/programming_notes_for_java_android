@@ -1,12 +1,20 @@
 package com.handsomezhou.futurerecenttimeselect.activity;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.handsomezhou.futurerecenttimeselect.model.AlarmMsg;
+import com.handsomezhou.futurerecenttimeselect.model.TimeItemValue;
+import com.handsomezhou.futurerecenttimeselect.util.AlarmUtil;
+import com.handsomezhou.futurerecenttimeselect.util.TimeItemUtil;
 import com.handsomezhou.futurerecenttimeselect.util.ViewUtil;
 import com.handsomezhou.futurerecenttimeselect.view.FutureRecentTimeSelectView;
 import com.handsomezhou.futurerecenttimeselect.view.FutureRecentTimeSelectView.OnFutureRecentTimeSelectView;
@@ -16,6 +24,8 @@ public class MainActivity extends Activity implements OnFutureRecentTimeSelectVi
 	private Context mContext;
 	private Button mFutureRecentTimeSelectBtn;
 	private FutureRecentTimeSelectView mFutureRecentTimeSelectView;
+	private AlarmMsg mAlarmMsg;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,21 +51,22 @@ public class MainActivity extends Activity implements OnFutureRecentTimeSelectVi
 	}
 
 	@Override
-	public void onFutureRecentTimeSelectViewOk(int dayValue, int hourValue,
-			int minuteValue) {
-		Toast.makeText(mContext, dayValue+":"+hourValue+":"+minuteValue, Toast.LENGTH_SHORT).show();
-		ViewUtil.hideView(mFutureRecentTimeSelectView);
+	public void onFutureRecentTimeSelectViewOk(TimeItemValue timeItemValue) {
+		futureRecentTimeSelectViewOk(timeItemValue);
 	}
 
 	@Override
-	public void onTimeChanged(int dayValue, int hourValue, int minuteValue) {
+	public void onTimeChanged(TimeItemValue timeItemValue) {
 		// TODO Auto-generated method stub
 		
 	}
+	
 	/*End: OnFutureRecentTimeSelectView*/
 	
 	private void initData(){
 		mContext=this;
+		mAlarmMsg=new AlarmMsg();
+		
 		return;
 	}
 	
@@ -81,6 +92,28 @@ public class MainActivity extends Activity implements OnFutureRecentTimeSelectVi
 		//Toast.makeText(mContext, "clickFutureRecentTimeSelect", Toast.LENGTH_SHORT).show();
 		return;
 	}
-
-
+	
+	private void futureRecentTimeSelectViewOk(TimeItemValue timeItemValue){
+		if(null==timeItemValue){
+			return;
+		}
+		
+		String[] dayRelativeToToday=mContext.getResources().getStringArray(R.array.day_relative_to_today);
+		Toast.makeText(mContext,dayRelativeToToday[timeItemValue.getDayItemValue()]+":"+timeItemValue.getHourItemValue()+":"+timeItemValue.getMinuteItemValue(), Toast.LENGTH_SHORT).show();
+		
+		mAlarmMsg.setType(0);
+		mAlarmMsg.setText("text");
+		mAlarmMsg.setSender("sender");
+		mAlarmMsg.setReceiver("receiver");
+		
+		
+		long triggerAtMillis=TimeItemUtil.getTimeInMillis(timeItemValue);
+		Intent intent=new Intent(mContext, AlarmNoticeActivity.class);
+		intent.putExtra(AlarmNoticeActivity.ALARM_MSG_OBJECT, mAlarmMsg);
+		
+		PendingIntent pendingIntent=PendingIntent.getActivity(mContext, 0, intent, 0);
+		AlarmUtil.set(mContext, AlarmManager.RTC_WAKEUP, triggerAtMillis, pendingIntent);
+		
+		ViewUtil.hideView(mFutureRecentTimeSelectView);
+	}
 }

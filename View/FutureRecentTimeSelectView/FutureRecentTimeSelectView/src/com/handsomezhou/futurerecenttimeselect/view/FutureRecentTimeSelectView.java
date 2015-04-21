@@ -1,5 +1,6 @@
 package com.handsomezhou.futurerecenttimeselect.view;
 
+import com.handsomezhou.futurerecenttimeselect.model.TimeItemValue;
 import com.handsomezhou.futurerecenttimeselect.view.FutureRecentTimeView.OnFutureRecentTimeView;
 import com.handsomezhou.futurerecenttimeselectview.R;
 
@@ -32,16 +33,16 @@ public class FutureRecentTimeSelectView extends LinearLayout implements OnFuture
 
 	public interface OnFutureRecentTimeSelectView{
 		void onFutureRecentTimeSelectViewCancel();
-		void onFutureRecentTimeSelectViewOk(int dayValue,int hourValue,int minuteValue);
-		void onTimeChanged(int dayValue,int hourValue,int minuteValue);
+		void onFutureRecentTimeSelectViewOk(TimeItemValue timeItemValue);
+		void onTimeChanged(TimeItemValue timeItemValue);
 	}
 	
 	/*Start: OnFutureRecentTimeView*/
 	@Override
-	public void onTimeChanged(int dayValue, int hourValue, int minuteValue) {
-		Log.i(TAG,"dayValue["+dayValue+"]hourValue["+ hourValue+"]minuteValue["+minuteValue+"]");
+	public void onTimeChanged(TimeItemValue timeItemValue) {
+		Log.i(TAG,"dayValue["+timeItemValue.getDayItemValue()+"]hourValue["+ timeItemValue.getHourItemValue()+"]minuteValue["+timeItemValue.getMinuteItemValue()+"]");
 		if(null!=mOnFutureRecentTimeSelectView){
-			mOnFutureRecentTimeSelectView.onTimeChanged(dayValue, hourValue, minuteValue);
+			mOnFutureRecentTimeSelectView.onTimeChanged(timeItemValue);
 		}
 	}
 	/*End: OnFutureRecentTimeView*/
@@ -100,8 +101,8 @@ public class FutureRecentTimeSelectView extends LinearLayout implements OnFuture
 			int dayValue=mFutureRecentTimeView.getDayValue();
 			int hourValue=mFutureRecentTimeView.getHourValue();
 			int minuteValue=mFutureRecentTimeView.getMinuteValue();
-			
-			mOnFutureRecentTimeSelectView.onFutureRecentTimeSelectViewOk(dayValue, hourValue, minuteValue);
+			TimeItemValue timeItemValue=new TimeItemValue(dayValue, hourValue, minuteValue);
+			mOnFutureRecentTimeSelectView.onFutureRecentTimeSelectViewOk(timeItemValue);
 		}
 		
 		return;

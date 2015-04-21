@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.handsomezhou.futurerecenttimeselectview"
+    package="com.handsomezhou.customdialog"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="9"
-        android:targetSdkVersion="18" />
+        android:targetSdkVersion="17" />
 
     <application
         android:allowBackup="true"
@@ -14,18 +14,13 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         <activity
-            android:name="com.handsomezhou.futurerecenttimeselect.activity.MainActivity"
+            android:name="com.handsomezhou.customdialog.activity.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="com.handsomezhou.futurerecenttimeselect.activity.AlarmNoticeActivity"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.Dialog" >
         </activity>
     </application>
 
