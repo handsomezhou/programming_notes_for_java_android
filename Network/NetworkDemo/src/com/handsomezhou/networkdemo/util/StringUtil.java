@@ -11,7 +11,7 @@ import com.handsomezhou.networkdemo.util.NetworkUtil.NETWORK_TYPE;
 public class StringUtil {
 	
 	public static String  getNetworkType(Context context,NETWORK_TYPE networkType){
-		String currentnetworkPrefix = context.getString(R.string.current_network_type);
+		String currentnetworkPrefix = context.getString(R.string.network_type_state);
 		String networkTypeContent=null;
 		switch (networkType) {
 		case NETWORKTYPE_INVALID:

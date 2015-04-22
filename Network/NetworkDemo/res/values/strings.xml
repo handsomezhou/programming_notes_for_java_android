@@ -4,17 +4,17 @@
     <string name="app_name">NetworkDemo</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="network_type_invalid">不可用</string>
+    <string name="network_type_invalid">网络不可用</string>
     <string name="network_type_2g">2G</string>
     <string name="network_type_3g">3G</string>
     <string name="network_type_4g_no_less">4G及之上</string>
     <string name="network_type_wifi">wifi</string>
-    <string name="network_type_unknow">未知</string>
-    <string name="current_network_type">当前网络:</string>
-    
+    <string name="network_type_unknow">网络可用</string>
+    <string name="network_type_state">网络状态:</string>
     <string name="call_state">通话状态:</string>
     <string name="call_state_ringing">响铃</string>
     <string name="call_state_idle">空闲</string>
     <string name="call_state_offhook">通话中</string>
+    <string name="network_testing_domain">www.google.com</string>
 
 </resources>

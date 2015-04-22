@@ -1,5 +1,9 @@
 package com.handsomezhou.networkdemo.util;
 
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 import com.handsomezhou.networkdemo.R;
 
 import android.content.Context;
@@ -16,7 +20,7 @@ import android.widget.Toast;
  * */
 public class NetworkUtil {
 	private final static String TAG = "NetworkUtil";
-
+	private static final int TIMEOUT_MS=3000;
 	public enum NETWORK_TYPE {
 		NETWORKTYPE_INVALID,
 		/* NETWORKTYPE_WAP , */
@@ -111,7 +115,27 @@ public class NetworkUtil {
 		return networkType;
 	}	
 
-	//public static boolean 
+	public static boolean isReachable(){
+		boolean reachable=false;
+		do{
+			try {
+				InetAddress address = InetAddress.getByName("www.baidu.com"/*context.getString(R.string.network_testing_domain)*/);
+					//reachable=address.isReachable(TIMEOUT_MS);
+				    //Log.i(TAG, "Name: " + address.getHostName());
+				    Log.i(TAG, "Addr: " + address.getHostAddress());
+				    //Log.i(TAG, "Reach: " + reachable);
+				    reachable=true;
+				break;
+			} catch (UnknownHostException e) {
+				e.printStackTrace();
+				Log.i(TAG,"UnknownHostException");
+				reachable=false;
+				break;
+			} 
+		}while(false);
+		
+		return reachable;
+	} 
 	/**
 	 * Check if the connection is fast
 	 * 
@@ -197,4 +221,6 @@ public class NetworkUtil {
 
 		return networkType;
 	}
+	
+	
 }
