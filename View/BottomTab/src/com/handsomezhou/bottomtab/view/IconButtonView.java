@@ -4,11 +4,13 @@ import com.handsomezhou.bottomtab.R;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class IconButtonView extends RelativeLayout {
+	private static final int TITLE_TEXT_VIEW_ID=1;
     private Context mContext;
     private ImageView mIconIv;
     private TextView mTitleTv;
@@ -42,25 +44,37 @@ public class IconButtonView extends RelativeLayout {
     }
     
     private void initView(){
+    	 this.removeAllViews();
+        
+		mTitleTv = new TextView(mContext);
+		mTitleTv.setId(TITLE_TEXT_VIEW_ID);
+		// mTitleTv.setTextSize(mContext.getResources().getDimension(R.dimen.tab_index_text_size));
+
+		mTitleTv.setGravity(Gravity.CENTER);
+		RelativeLayout.LayoutParams titleTvLp = new RelativeLayout.LayoutParams(
+				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		titleTvLp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+		titleTvLp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+		this.addView(mTitleTv, titleTvLp);
+
+		mIconIv = new ImageView(mContext);
+
+		int layoutWidth = (int) mContext.getResources().getDimension(
+				R.dimen.tab_index_icon_width);
+		int layoutHeight = (int) mContext.getResources().getDimension(
+				R.dimen.tab_index_icon_height);
+		/*
+		 * int layoutWidth= LayoutParams.WRAP_CONTENT;
+		 *  intlayoutHeight=LayoutParams.WRAP_CONTENT;
+		 */
+		RelativeLayout.LayoutParams iconIvLp = new RelativeLayout.LayoutParams(
+				layoutWidth, layoutHeight);
+		iconIvLp.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+		iconIvLp.addRule(RelativeLayout.ABOVE, mTitleTv.getId());
       
+         
+        this.addView(mIconIv,iconIvLp);
         
-        mTitleTv=new TextView(mContext);
-        mTitleTv.setTextSize(mContext.getResources().getDimensionPixelSize(R.dimen.tab_index_text_size));
-        
-        RelativeLayout.LayoutParams titleTvLp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
-        titleTvLp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        titleTvLp.addRule(RelativeLayout.CENTER_HORIZONTAL);
-        this.addView(mTitleTv, titleTvLp);
-        
-        mIconIv=new ImageView(mContext);
-        int layoutWidth=(int) mContext.getResources().getDimension(R.dimen.tab_index_icon_width);
-        int layoutHeight=(int) mContext.getResources().getDimension(R.dimen.tab_index_icon_height);
-        RelativeLayout.LayoutParams iconIvLp=new RelativeLayout.LayoutParams(layoutWidth,layoutHeight);
-        iconIvLp.addRule(RelativeLayout.CENTER_HORIZONTAL);
-        
-        this.removeAllViews();
-        this.addView(mTitleTv);
-        this.addView(mIconIv);
         return;
     }
 }
