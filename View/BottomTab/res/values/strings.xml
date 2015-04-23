@@ -4,5 +4,9 @@
     <string name="app_name">BottomTab</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="call">拨打</string>
+    <string name="contacts">联系人</string>
+    <string name="sms">短信</string>
+    <string name="more">更多</string>
 
 </resources>
