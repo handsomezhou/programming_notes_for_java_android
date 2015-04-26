@@ -4,7 +4,10 @@
     <string name="app_name">FragmentDemo</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="fragment_xml_layout">fragment xml layout</string>
+    <string name="fragment_top_tab">fragment top tab</string>
     <string name="fragment_code_layout">fragment code layout</string>
+    <string name="telephone">电话</string>
+    <string name="contacts">联系人</string>
+    <string name="sms">短信</string>
 
 </resources>

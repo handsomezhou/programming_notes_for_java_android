@@ -3,14 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical"
+    android:background="@color/green"
     android:gravity="center"
     android:orientation="horizontal" >
 
     <Button
-        android:id="@+id/fragment_xml_layout_btn"
+        android:id="@+id/fragment_top_tab_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/fragment_xml_layout" />
+        android:text="@string/fragment_top_tab" />
 
     <Button
         android:id="@+id/fragment_code_layout_btn"

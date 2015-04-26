@@ -1,72 +1,67 @@
 package com.handsomezhou.fragmentdemo.fragment;
 
-import com.handsomezhou.fragmentdemo.R;
-
-import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class MainHorizontalFragment extends Fragment {
-	private Context mContext;
-	private Button mFragmentXmlLayoutBtn;
-	private Button mFragmentCodeLayoutBtn;
-	
+import com.handsomezhou.fragmentdemo.R;
+import com.handsomezhou.fragmentdemo.activity.AddressBookTopTabActivity;
+
+public class MainHorizontalFragment extends BaseFragment {
+	private Button mFragmentTopTabBtn;
+	private Button mFragmentBottomTabBtn;
+
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+	protected void initData() {
+		setContext(getActivity().getApplicationContext());
+		return;
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_main_horizontal,container, false);
-		initData();
-		initView(view);
-		initListener();
+	protected View initView(LayoutInflater inflater, ViewGroup container) {
+		View view = inflater.inflate(R.layout.fragment_main_horizontal,
+				container, false);
+		mFragmentTopTabBtn = (Button) view
+				.findViewById(R.id.fragment_top_tab_btn);
+		mFragmentBottomTabBtn = (Button) view
+				.findViewById(R.id.fragment_code_layout_btn);
 		return view;
+
 	}
-	
-	private void initData(){
-		mContext=getActivity().getApplicationContext();
-		return;
-	}
-	
-	private void initView(View view){
-		mFragmentXmlLayoutBtn=(Button) view.findViewById(R.id.fragment_xml_layout_btn);
-		mFragmentCodeLayoutBtn=(Button) view.findViewById(R.id.fragment_code_layout_btn);
-		return;
-	}
-	
-	private void initListener(){
-		mFragmentXmlLayoutBtn.setOnClickListener(new View.OnClickListener() {
-			
+
+	@Override
+	protected void initListener() {
+		mFragmentTopTabBtn.setOnClickListener(new View.OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
-				clickFragmentXmlLayout();
+				clickFragmentTopTab();
 			}
 		});
-		
-		mFragmentCodeLayoutBtn.setOnClickListener(new View.OnClickListener() {
-			
+
+		mFragmentBottomTabBtn.setOnClickListener(new View.OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
-				clickFragmentCodeLayout();
+				clickFragmentBottomTab();
 			}
 		});
 		return;
+
 	}
-	
-	private void clickFragmentXmlLayout(){
-		Toast.makeText(mContext,"clickFragmentXmlLayout" , Toast.LENGTH_SHORT).show();
+
+
+	private void clickFragmentTopTab() {
+		Toast.makeText(getContext(), "fragment_top_tab", Toast.LENGTH_SHORT).show();
+		Intent intent = new Intent(getContext(), AddressBookTopTabActivity.class);
+		startActivity(intent);
 	}
-	
-	private void clickFragmentCodeLayout(){
-		Toast.makeText(mContext,"clickFragmentCodeLayout" , Toast.LENGTH_SHORT).show();
+
+	private void clickFragmentBottomTab() {
+		Toast.makeText(getContext(), "fragment_bottom_tab", Toast.LENGTH_SHORT).show();
 	}
 
 }
