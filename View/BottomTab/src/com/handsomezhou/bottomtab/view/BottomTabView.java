@@ -13,6 +13,8 @@ import com.handsomezhou.bottomtab.Interface.OnTabChange;
 import com.handsomezhou.bottomtab.Interface.OnTabChange.TAB_CHANGE_STATE;
 import com.handsomezhou.bottomtab.model.IconButtonData;
 
+
+
 public class BottomTabView extends LinearLayout implements OnClickListener{
     private static final int PADDING_DEFAULT=0;
     private static final int PADDING_LEFT_DEFAULT=0;
@@ -56,6 +58,60 @@ public class BottomTabView extends LinearLayout implements OnClickListener{
 	}
 	/*End: OnClickListener*/
 	
+	public void addIconButtonData(IconButtonData iconButtonData){
+	    
+	    if(null==mIconButtonData){
+	        mIconButtonData=new ArrayList<IconButtonData>();
+	    }
+	    
+	    mIconButtonData.add(iconButtonData);
+	    addIconButtonView(mIconButtonData.get(mIconButtonData.size()-1).getIconButtonView());
+	    setCurrentTab(mIconButtonData.get(0).getIconButtonValue().getTag());
+	    mIconButtonData.get(0).getIconButtonView().getIconIv().setBackgroundResource( mIconButtonData.get(0).getIconButtonValue().getIconSelectedUnfocused());
+	    setLastIconResId(mIconButtonData.get(0).getIconButtonValue().getIconSelectedUnfocused());
+	    
+	    mIconButtonData.get(mIconButtonData.size()-1).getIconButtonView().setOnClickListener(this);
+	    mIconButtonData.get(mIconButtonData.size()-1).getIconButtonView().setTag(mIconButtonData.get(mIconButtonData.size()-1).getIconButtonValue().getTag());
+	   
+	    return;
+	}
+	
+	public void setCurrentTabItem(Object tag){
+		if(null==tag){
+			return;
+		}
+		
+		setCurrentTab(tag);
+		for(IconButtonData ibd:mIconButtonData){
+			if(ibd.getIconButtonValue().getTag().equals(tag)){
+				ibd.getIconButtonView().getIconIv().setBackgroundResource(ibd.getIconButtonValue().getIconSelectedUnfocused());
+				setLastIconResId(ibd.getIconButtonValue().getIconSelectedUnfocused());
+			}else{
+				ibd.getIconButtonView().getIconIv().setBackgroundResource(ibd.getIconButtonValue().getIconUnselected());
+			}
+		}
+	}
+	
+	public void removeIconButtonData(IconButtonData iconButtonData){
+	    
+	}
+	
+	public OnTabChange getOnTabChange() {
+		return mOnTabChange;
+	}
+
+	public void setOnTabChange(OnTabChange onTabChange) {
+		mOnTabChange = onTabChange;
+	}
+	
+	public Object getCurrentTab() {
+		return mCurrentTab;
+	}
+
+	public void setCurrentTab(Object currentTab) {
+		mCurrentTab = currentTab;
+	}
+	
 	private void initData(){
 	    mIconButtonData=new ArrayList<IconButtonData>();
 	    
@@ -80,44 +136,6 @@ public class BottomTabView extends LinearLayout implements OnClickListener{
 	    return;
 	}
 	
-	public void addIconButtonData(IconButtonData iconButtonData){
-	    
-	    if(null==mIconButtonData){
-	        mIconButtonData=new ArrayList<IconButtonData>();
-	    }
-	    
-	    mIconButtonData.add(iconButtonData);
-	    addIconButtonView(mIconButtonData.get(mIconButtonData.size()-1).getIconButtonView());
-	    setCurrentTab(mIconButtonData.get(0).getIconButtonValue().getTag());
-	    mIconButtonData.get(0).getIconButtonView().getIconIv().setBackgroundResource( mIconButtonData.get(0).getIconButtonValue().getIconSelectedUnfocused());
-	    setLastIconResId(mIconButtonData.get(0).getIconButtonValue().getIconSelectedUnfocused());
-	    
-	    mIconButtonData.get(mIconButtonData.size()-1).getIconButtonView().setOnClickListener(this);
-	    mIconButtonData.get(mIconButtonData.size()-1).getIconButtonView().setTag(mIconButtonData.get(mIconButtonData.size()-1).getIconButtonValue().getTag());
-	   
-	    return;
-	}
-	
-	public void removeIconButtonData(IconButtonData iconButtonData){
-	    
-	}
-	
-	public OnTabChange getOnTabChange() {
-		return mOnTabChange;
-	}
-
-	public void setOnTabChange(OnTabChange onTabChange) {
-		mOnTabChange = onTabChange;
-	}
-	
-	public Object getCurrentTab() {
-		return mCurrentTab;
-	}
-
-	public void setCurrentTab(Object currentTab) {
-		mCurrentTab = currentTab;
-	}
-	
 	private int getLastIconResId() {
 		return mLastIconResId;
 	}
@@ -136,7 +154,7 @@ public class BottomTabView extends LinearLayout implements OnClickListener{
         iconButtonView.setLayoutParams(lp);
         this.addView(iconButtonView);
 	}
-
+	
 	private void changeToTab(Object fromTab, Object toTab) {
 		if(fromTab!=toTab){//change tab
 			setCurrentTab(toTab);
