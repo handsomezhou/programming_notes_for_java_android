@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.astuetz;
+package com.handsomezhou.toptab.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;

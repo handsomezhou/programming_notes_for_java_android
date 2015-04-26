@@ -1,7 +1,5 @@
 package com.handsomezhou.toptab.fragment;
 
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,42 +8,33 @@ import android.widget.Toast;
 
 import com.handsomezhou.toptab.R;
 
-public class TelephoneFragment extends Fragment {
+public class TelephoneFragment extends BaseFragment {
 	private Button mTelephoneBtn;
+
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
+	protected void initData() {
+		setContext(getActivity().getApplicationContext());
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View v=inflater.inflate(R.layout.fragment_telephone, container, false);
-		initView(v);
-		initListener();
-		
-		return v;
+	protected View initView(LayoutInflater inflater, ViewGroup container) {
+		View view=inflater.inflate(R.layout.fragment_telephone, container, false);
+		mTelephoneBtn=(Button) view.findViewById(R.id.telephone_btn);
+		return view;
 	}
-	
-	private void initView(View v){
-		if(null==v){
-			return;
-		}
-		
-		mTelephoneBtn=(Button) v.findViewById(R.id.telephone_btn);
-	}
-	
-	private void initListener(){
+
+	@Override
+	protected void initListener() {
 		if(null!=mTelephoneBtn){
 			mTelephoneBtn.setOnClickListener(new View.OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {
-					Toast.makeText(getActivity().getApplicationContext(),getActivity().getApplicationContext().getResources().getString(R.string.telephone) , Toast.LENGTH_SHORT).show();
+					Toast.makeText(getContext(),getContext().getResources().getString(R.string.telephone) , Toast.LENGTH_SHORT).show();
 				}
 			});
 		}
+		
 	}
 
 }

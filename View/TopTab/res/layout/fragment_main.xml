@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
-    <com.astuetz.PagerSlidingTabStrip
+    <com.handsomezhou.toptab.view.PagerSlidingTabStrip
         android:id="@+id/pager_sliding_tab_strip"
         android:layout_width="match_parent"
         android:layout_height="40dp" >
-    </com.astuetz.PagerSlidingTabStrip>
+    </com.handsomezhou.toptab.view.PagerSlidingTabStrip>
     
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
