@@ -8,11 +8,12 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.handsomezhou.fragmentdemo.R;
+import com.handsomezhou.fragmentdemo.activity.AddressBookBottomTabActivity;
 import com.handsomezhou.fragmentdemo.activity.AddressBookTopTabActivity;
 
 public class MainVerticalFragment extends BaseFragment {
 	private Button mFragmentTopTabBtn;
-	private Button mFragmentCodeLayoutBtn;
+	private Button mFragmentBottomTabBtn;
 	
 	@Override
 	protected void initData() {
@@ -24,7 +25,7 @@ public class MainVerticalFragment extends BaseFragment {
 	protected View initView(LayoutInflater inflater, ViewGroup container) {
 		View view = inflater.inflate(R.layout.fragment_main_vertical,container, false);
 		mFragmentTopTabBtn=(Button) view.findViewById(R.id.fragment_top_tab_btn);
-		mFragmentCodeLayoutBtn=(Button) view.findViewById(R.id.fragment_code_layout_btn);
+		mFragmentBottomTabBtn=(Button) view.findViewById(R.id.fragment_bottom_tab_btn);
 		
 		return view;
 	}
@@ -39,7 +40,7 @@ public class MainVerticalFragment extends BaseFragment {
 			}
 		});
 		
-		mFragmentCodeLayoutBtn.setOnClickListener(new View.OnClickListener() {
+		mFragmentBottomTabBtn.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -59,5 +60,7 @@ public class MainVerticalFragment extends BaseFragment {
 	
 	private void clickFragmentBottomTab(){
 		Toast.makeText(getContext(),"fragment_bottom_tab" , Toast.LENGTH_SHORT).show();
+		Intent intent=new Intent(getContext(), AddressBookBottomTabActivity.class);
+		startActivity(intent);
 	}
 }

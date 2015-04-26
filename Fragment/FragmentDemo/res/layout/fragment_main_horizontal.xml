@@ -14,9 +14,9 @@
         android:text="@string/fragment_top_tab" />
 
     <Button
-        android:id="@+id/fragment_code_layout_btn"
+        android:id="@+id/fragment_bottom_tab_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/fragment_code_layout" />
+        android:text="@string/fragment_bottom_tab" />
 
 </LinearLayout>
