@@ -13,7 +13,6 @@
         android:id="@+id/bottom_tab_view"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:layout_alignParentBottom="true" >
-    </com.handsomezhou.bottomtab.view.BottomTabView>
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>
