@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AppGuide</string>
+    <string name="start_activity">This is a start Activity</string>
+    <string name="guide_activity">This is a guide Activity</string>
+    <string name="home_acitivity">This is a main Activity</string>
+    <string name="guide_pager_one">I\'m guide pager one</string>
+    <string name="guide_pager_two">I\'m guide pager two</string>
+    <string name="guide_pager_three">I\'m guide pager three</string>
+    <string name="guide_pager_four">I\'m guide pager four</string>
+    <string name="enter_home_pager">enter home pager</string>
+    <string name="clear_configuration_data">clear configuration data</string>
+
+</resources>
