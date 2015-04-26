@@ -1,5 +1,5 @@
 
-package com.handsomezhou.bottomtab.model;
+package com.handsomezhou.fragmentdemo.model;
 
 /**
  * custom IconButton's value

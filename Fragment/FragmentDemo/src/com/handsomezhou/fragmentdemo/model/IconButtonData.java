@@ -1,4 +1,4 @@
-package com.handsomezhou.bottomtab.model;
+package com.handsomezhou.fragmentdemo.model;
 
 import android.content.Context;
 

@@ -7,8 +7,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.handsomezhou.fragmentdemo.R;
+import com.handsomezhou.fragmentdemo.Interface.OnTabChange.TAB_CHANGE_STATE;
 
 public class TelephoneFragment extends BaseFragment {
+	private static final String TAG="TelephoneFragment";
 	private Button mTelephoneBtn;
 
 	@Override
@@ -35,6 +37,24 @@ public class TelephoneFragment extends BaseFragment {
 			});
 		}
 		
+	}
+	
+	public void  updateView(TAB_CHANGE_STATE tabChangeState){
+		switch (tabChangeState) {
+		case TAB_UNSELECTED:
+			Toast.makeText(getContext(), TAG+tabChangeState.toString(), Toast.LENGTH_SHORT).show();
+			break;
+		case TAB_SELECTED_UNDOCUSED:
+			Toast.makeText(getContext(), TAG+tabChangeState.toString(), Toast.LENGTH_SHORT).show();
+			break;
+			
+		case TAB_SELECTED_FOCUSED:
+			Toast.makeText(getContext(), TAG+tabChangeState.toString(), Toast.LENGTH_SHORT).show();
+			break;
+			
+		default:
+			break;
+		}
 	}
 
 }
