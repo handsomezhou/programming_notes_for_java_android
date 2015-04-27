@@ -1,18 +1,16 @@
 package com.handsomezhou.customdialog.dialog;
 
-import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.handsomezhou.customdialog.R;
 
-public class ExitDialog {
-	private Context mContext;
-	private AlertDialog mAlertDialog;
+public class ExitDialog extends BaseDialog{
+	
 	private OnExitDialog mOnExitDialog;
 	
 	//Start: mExitDialog Data
@@ -24,10 +22,7 @@ public class ExitDialog {
 	//End: mExitDialog Data
 	
 	private View mExitDialogLayout;
-	private int mViewSpacingLeft=0;
-	private int mViewSpacingTop=0;
-	private int mViewSpacingRight=0;
-	private int mViewSpacingBottom=0;
+
 	//Start: mExitDialog View
 	private ImageView mIconIv;
 	private TextView mTitleTv;
@@ -38,11 +33,8 @@ public class ExitDialog {
 	
 
 	public ExitDialog(Context context) {
-		super();
-		mContext = context;
-
+		super(context);
 		initData();
-		initView();
 		initListener();
 	}
 
@@ -51,14 +43,13 @@ public class ExitDialog {
 		void onExitDialogCancel();
 	}
 	
-	public AlertDialog getAlertDialog() {
-		return mAlertDialog;
-	}
-
-	public void setAlertDialog(AlertDialog alertDialog) {
-		mAlertDialog = alertDialog;
-	}
-
+	/*Start : BaseDialog*/
+	@Override
+	protected View getView() {
+		return initView();
+	}	
+	/*End : BaseDialog*/
+	
 	public OnExitDialog getOnExitDialog() {
 		return mOnExitDialog;
 	}
@@ -67,9 +58,7 @@ public class ExitDialog {
 		mOnExitDialog = onExitDialog;
 	}
 
-	public void setCanceledOnTouchOutside(boolean cancel){
-		mAlertDialog.setCanceledOnTouchOutside(cancel);
-	}
+	
 	
 	public int getIcon() {
 		return mIcon;
@@ -164,9 +153,8 @@ public class ExitDialog {
 		return;
 	}
 
-	@SuppressLint("InflateParams")
-	private void initView() {
-		LayoutInflater inflater = LayoutInflater.from(mContext);
+	private View initView() {
+		LayoutInflater inflater = LayoutInflater.from(getContext());
 		setExitDialogLayout(inflater.inflate(R.layout.dialog_exit, null));
 		setIconIv((ImageView)getExitDialogLayout().findViewById(R.id.icon_image_view));
 		setTitleTv((TextView)getExitDialogLayout().findViewById(R.id.title_text_view));
@@ -174,11 +162,7 @@ public class ExitDialog {
 		setOkBtn((Button)getExitDialogLayout().findViewById(R.id.ok_btn));
 		setCancelBtn((Button)getExitDialogLayout().findViewById(R.id.cancel_btn));
 		
-		mAlertDialog = new AlertDialog.Builder(mContext).create();
-		mAlertDialog.setView(getExitDialogLayout(), mViewSpacingLeft, mViewSpacingTop, mViewSpacingRight,mViewSpacingBottom);
-		mAlertDialog.setCanceledOnTouchOutside(false);
-		
-		return;
+		return getExitDialogLayout();
 	}
 
 	private void initListener() {
@@ -206,7 +190,7 @@ public class ExitDialog {
 		if(null!=mOnExitDialog){
 			mOnExitDialog.onExitDialogOk();
 		}
-		mAlertDialog.dismiss();
+		getAlertDialog().dismiss();
 		
 		return;
 	}
@@ -217,8 +201,10 @@ public class ExitDialog {
 			mOnExitDialog.onExitDialogCancel();
 		}
 		
-		mAlertDialog.dismiss();
+		getAlertDialog().dismiss();
 		
 		return;
-	}	
+	}
+
+	
 }
