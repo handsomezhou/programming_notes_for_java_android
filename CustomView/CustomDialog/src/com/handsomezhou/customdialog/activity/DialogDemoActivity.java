@@ -1,16 +1,15 @@
 package com.handsomezhou.customdialog.activity;
 
+import com.handsomezhou.customdialog.fragment.DialogDemoFragment;
 
 import android.support.v4.app.Fragment;
 
-import com.handsomezhou.customdialog.fragment.MainFragment;
-
-public class MainActivity extends BaseSingleFragmentActivity{
+public class DialogDemoActivity extends BaseSingleFragmentActivity {
 
 	@Override
 	protected Fragment createFragment() {
 		// TODO Auto-generated method stub
-		return new MainFragment();
+		return new DialogDemoFragment();
 	}
 
 	@Override
@@ -18,4 +17,5 @@ public class MainActivity extends BaseSingleFragmentActivity{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 }

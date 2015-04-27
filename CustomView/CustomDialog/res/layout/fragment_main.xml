@@ -6,11 +6,19 @@
     tools:context="com.handsomezhou.customdialog.activity.MainActivity" >
 
     <Button
-        android:id="@+id/exit_dialog_btn"
+        android:id="@+id/dialog_demo_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
-        android:text="@string/exit_dialog" />
+        android:text="dialog_demo_btn" />
+
+    <Button
+        android:id="@+id/dialog_fragment_demo_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:text="dialog_fragment_demo_btn" />
 
 </LinearLayout>

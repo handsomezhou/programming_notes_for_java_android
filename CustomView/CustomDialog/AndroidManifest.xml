@@ -22,6 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.handsomezhou.customdialog.activity.DialogDemoActivity" >
+        </activity>
+        <activity android:name="com.handsomezhou.customdialog.activity.DialogFragmentDemoActivity" >
+        </activity>
     </application>
 
 </manifest>
