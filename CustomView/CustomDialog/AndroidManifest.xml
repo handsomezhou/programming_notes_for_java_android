@@ -24,8 +24,6 @@
         </activity>
         <activity android:name="com.handsomezhou.customdialog.activity.DialogDemoActivity" >
         </activity>
-        <activity android:name="com.handsomezhou.customdialog.activity.DialogFragmentDemoActivity" >
-        </activity>
         <activity android:name="com.handsomezhou.customdialog.activity.ProgressDialogDemoActivity" >
         </activity>
     </application>

@@ -190,7 +190,7 @@ public class ExitDialog extends BaseDialog{
 		if(null!=mOnExitDialog){
 			mOnExitDialog.onExitDialogOk();
 		}
-		getAlertDialog().dismiss();
+		this.dismiss();
 		
 		return;
 	}
@@ -201,7 +201,7 @@ public class ExitDialog extends BaseDialog{
 			mOnExitDialog.onExitDialogCancel();
 		}
 		
-		getAlertDialog().dismiss();
+		this.dismiss();
 		
 		return;
 	}

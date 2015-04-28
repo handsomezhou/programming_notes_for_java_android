@@ -27,7 +27,7 @@ public class DialogDemoFragment extends BaseFragment implements OnExitDialog {
 		mDialogDemoBtn = (Button) view.findViewById(R.id.dialog_demo_btn);
 		mExitDialog = new ExitDialog(getContext());
 		mExitDialog.setOnExitDialog(this);
-		mExitDialog.getAlertDialog().show();
+		mExitDialog.show();
 
 		return view;
 	}
@@ -59,13 +59,13 @@ public class DialogDemoFragment extends BaseFragment implements OnExitDialog {
 		Toast.makeText(getContext(), "onCancel", Toast.LENGTH_SHORT).show();
 
 	}
-
 	/* END: OnExitDialog */
-	private void clickExitDialog() {
-		if (mExitDialog.getAlertDialog().isShowing()) {
-			mExitDialog.getAlertDialog().hide();
+	
+	public void clickExitDialog() {
+		if (mExitDialog.isShowing()) {
+			mExitDialog.hide();
 		} else {
-			mExitDialog.getAlertDialog().show();
+			mExitDialog.show();
 		}
 	}
 }
