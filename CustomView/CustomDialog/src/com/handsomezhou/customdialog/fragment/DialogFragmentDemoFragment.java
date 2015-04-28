@@ -27,6 +27,7 @@ public class DialogFragmentDemoFragment extends BaseFragment implements OnExitDi
 		mExitDialog = new ExitDialogFragment(getContext());
 		mExitDialog.setOnExitDialog(this);
 		mExitDialog.getAlertDialog().show();
+		
 		return view;
 	}
 

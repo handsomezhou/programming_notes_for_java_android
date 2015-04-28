@@ -9,6 +9,7 @@
     <string name="exit_dialog_message">确定退出本程序?</string>
     <string name="exit_dialog_cancel">取消</string>
     <string name="exit_dialog_ok">确定</string>
+    <string name="loading">加载中...</string>
     <string name="dialog_demo">dialog demo</string>
     <string name="dialog_fragment_demo">dialog fragment demo</string>
 
