@@ -48,7 +48,7 @@ public class ProgressDialogDemoFragment extends BaseFragment {
     protected View initView(LayoutInflater inflater, ViewGroup container) {
         View view=inflater.inflate(R.layout.fragment_dialog_progress_fragment_demo, container, false);
         mProgressDialogDemoBtn=(Button)view.findViewById(R.id.progress_dialog_demo_btn);
-        setBaseProgressDialog(new BaseProgressDialog(getActivity()));
+        setBaseProgressDialog(new BaseProgressDialog(getContext()));
         return view;
     }
 
@@ -72,14 +72,14 @@ public class ProgressDialogDemoFragment extends BaseFragment {
         super.onDestroy();
     }
     
-    private BaseProgressDialog getBaseProgressDialog() {
+    public BaseProgressDialog getBaseProgressDialog() {
         if(null==mBaseProgressDialog){
-            mBaseProgressDialog=new BaseProgressDialog(getActivity());
+            mBaseProgressDialog=new BaseProgressDialog(getContext());
         }
         return mBaseProgressDialog;
     }
 
-    private void setBaseProgressDialog(BaseProgressDialog baseProgressDialog) {
+    public void setBaseProgressDialog(BaseProgressDialog baseProgressDialog) {
         mBaseProgressDialog = baseProgressDialog;
     }
 
