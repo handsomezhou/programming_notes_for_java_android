@@ -13,7 +13,7 @@ public class ContactsFragment extends BaseFragment {
 
 	@Override
 	protected void initData() {
-		setContext(getActivity().getApplicationContext());
+		setContext(getActivity());
 	}
 
 	@Override

@@ -30,7 +30,7 @@ public class AddressBookTopTabFragment extends BaseFragment {
 
 	@Override
 	protected void initData() {
-		setContext(getActivity().getApplicationContext());
+		setContext(getActivity());
 		mDisplayMetrics = getResources().getDisplayMetrics();
 
 		// init title

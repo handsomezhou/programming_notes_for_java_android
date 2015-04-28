@@ -15,14 +15,14 @@ public class SmsFragment extends BaseFragment {
 	private EditText mSmsEt;
 	@Override
 	protected void initData() {
-		setContext(getActivity().getApplicationContext());
+		setContext(getActivity());
 	}
 
 	@Override
 	protected View initView(LayoutInflater inflater, ViewGroup container) {
 		View view=inflater.inflate(R.layout.fragment_sms, container, false);
 		mSmsEt = (EditText) view.findViewById(R.id.sms_et);
-		mSmsEt.setHint(getActivity().getApplicationContext().getString(
+		mSmsEt.setHint(getContext().getString(
 				R.string.sms));
 		return view;
 	}

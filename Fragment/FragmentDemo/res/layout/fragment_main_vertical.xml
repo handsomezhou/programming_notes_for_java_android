@@ -18,4 +18,10 @@
         android:layout_height="wrap_content"
         android:text="@string/fragment_bottom_tab" />
 
+    <Button
+        android:id="@+id/fragment_data_pass_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_data_pass" />
+
 </LinearLayout>

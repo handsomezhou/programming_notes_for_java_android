@@ -10,14 +10,16 @@ import android.widget.Toast;
 import com.handsomezhou.fragmentdemo.R;
 import com.handsomezhou.fragmentdemo.activity.AddressBookBottomTabActivity;
 import com.handsomezhou.fragmentdemo.activity.AddressBookTopTabActivity;
+import com.handsomezhou.fragmentdemo.activity.FragmentDataPassFromActivity;
 
 public class MainHorizontalFragment extends BaseFragment {
 	private Button mFragmentTopTabBtn;
 	private Button mFragmentBottomTabBtn;
+	private Button mFragmentDataPassBtn;
 
 	@Override
 	protected void initData() {
-		setContext(getActivity().getApplicationContext());
+		setContext(getActivity());
 		return;
 	}
 
@@ -25,10 +27,9 @@ public class MainHorizontalFragment extends BaseFragment {
 	protected View initView(LayoutInflater inflater, ViewGroup container) {
 		View view = inflater.inflate(R.layout.fragment_main_horizontal,
 				container, false);
-		mFragmentTopTabBtn = (Button) view
-				.findViewById(R.id.fragment_top_tab_btn);
-		mFragmentBottomTabBtn = (Button) view
-				.findViewById(R.id.fragment_bottom_tab_btn);
+		mFragmentTopTabBtn = (Button) view.findViewById(R.id.fragment_top_tab_btn);
+		mFragmentBottomTabBtn = (Button) view.findViewById(R.id.fragment_bottom_tab_btn);
+		mFragmentDataPassBtn=(Button)view.findViewById(R.id.fragment_data_pass_btn);
 		return view;
 
 	}
@@ -50,6 +51,14 @@ public class MainHorizontalFragment extends BaseFragment {
 				clickFragmentBottomTab();
 			}
 		});
+		
+		mFragmentDataPassBtn.setOnClickListener(new View.OnClickListener() {
+            
+            @Override
+            public void onClick(View v) {
+                clickFragmentDataPass();
+            }
+        });
 		return;
 
 	}
@@ -66,5 +75,10 @@ public class MainHorizontalFragment extends BaseFragment {
 		Intent intent=new Intent(getContext(), AddressBookBottomTabActivity.class);
 		startActivity(intent);
 	}
-
+	
+	private void clickFragmentDataPass(){
+	    Toast.makeText(getContext(), "fragment_data_pass", Toast.LENGTH_SHORT).show();
+        Intent intent=new Intent(getContext(), FragmentDataPassFromActivity.class);
+        startActivity(intent);
+	}
 }

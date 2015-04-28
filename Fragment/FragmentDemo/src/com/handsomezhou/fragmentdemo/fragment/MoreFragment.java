@@ -12,7 +12,7 @@ public class MoreFragment extends BaseFragment {
 	private Button mMoreBtn;
 	@Override
 	protected void initData() {
-		setContext(getActivity().getApplicationContext());
+		setContext(getActivity());
 
 	}
 
@@ -30,7 +30,7 @@ public class MoreFragment extends BaseFragment {
 				
 				@Override
 				public void onClick(View v) {
-					Toast.makeText(getActivity().getApplicationContext(),getContext().getResources().getString(R.string.more) , Toast.LENGTH_SHORT).show();
+					Toast.makeText(getContext(),getContext().getResources().getString(R.string.more) , Toast.LENGTH_SHORT).show();
 					
 				}
 			});

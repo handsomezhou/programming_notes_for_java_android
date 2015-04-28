@@ -6,6 +6,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="fragment_top_tab">fragment top tab</string>
     <string name="fragment_bottom_tab">fragment bottom tab</string>
+    <string name="fragment_data_pass">fragment data pass</string>
     <string name="telephone">电话</string>
     <string name="call">拨打</string>
     <string name="contacts">联系人</string>

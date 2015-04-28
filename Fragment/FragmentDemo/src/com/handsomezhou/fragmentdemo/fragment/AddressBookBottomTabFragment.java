@@ -34,7 +34,7 @@ public class AddressBookBottomTabFragment extends BaseFragment implements OnTabC
     }
 	@Override
 	protected void initData() {
-		setContext(getActivity().getApplicationContext());
+		setContext(getActivity());
 		mAddressBookViews=new ArrayList<AddressBookView>();
 		
 		/*Start: call view*/

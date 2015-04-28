@@ -15,7 +15,7 @@ public class TelephoneFragment extends BaseFragment {
 
 	@Override
 	protected void initData() {
-		setContext(getActivity().getApplicationContext());
+		setContext(getActivity());
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class TelephoneFragment extends BaseFragment {
 				
 				@Override
 				public void onClick(View v) {
-					Toast.makeText(getActivity().getApplicationContext(),getContext().getResources().getString(R.string.telephone) , Toast.LENGTH_SHORT).show();
+					Toast.makeText(getContext(),getContext().getResources().getString(R.string.telephone) , Toast.LENGTH_SHORT).show();
 				}
 			});
 		}
