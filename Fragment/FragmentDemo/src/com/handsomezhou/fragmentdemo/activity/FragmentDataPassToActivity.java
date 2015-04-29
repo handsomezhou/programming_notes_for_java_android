@@ -2,24 +2,31 @@ package com.handsomezhou.fragmentdemo.activity;
 
 import java.util.Date;
 
+import android.app.Activity;
+import android.support.v4.app.Fragment;
+
 import com.handsomezhou.fragmentdemo.fragment.FragmentDataPassToFragment;
 
-import android.support.v4.app.Fragment;
-import android.util.Log;
-
 public class FragmentDataPassToActivity extends BaseSingleFragmentActivity {
-
+    private Fragment mFragmentDataPassToFragment; 
     @Override
     protected Fragment createFragment() {
         Date date=(Date)getIntent() .getSerializableExtra(FragmentDataPassToFragment.EXTRA_DATE);
-       // Log.i("FragmentDataPassToActivity", date+"");
-        return FragmentDataPassToFragment.newInstance(date);
+        return mFragmentDataPassToFragment=FragmentDataPassToFragment.newInstance(date);
     }
 
     @Override
     protected boolean isRealTimeLoadFragment() {
-        // TODO Auto-generated method stub
         return false;
+    }
+    
+    @Override
+    public void onBackPressed() {
+        if(mFragmentDataPassToFragment instanceof FragmentDataPassToFragment){
+            ((FragmentDataPassToFragment) mFragmentDataPassToFragment).sendResult(Activity.RESULT_OK);
+        }
+        
+        super.onBackPressed();
     }
 
 }

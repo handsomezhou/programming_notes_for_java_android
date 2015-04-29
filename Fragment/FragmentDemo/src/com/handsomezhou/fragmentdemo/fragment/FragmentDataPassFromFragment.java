@@ -38,45 +38,30 @@ public class FragmentDataPassFromFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 clickFragmentDataPassFromBtn();
-                
             }
         });
         
     }
-    /*
-     * 
-     *   @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode != Activity.RESULT_OK) return;
-        if (requestCode == REQUEST_DATE) {
-            Date date = (Date)data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
-            mCrime.setDate(date);
-            updateDate();
-        }
-    }
-     * */
     
     @Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-    	Toast.makeText(getContext(), "requestCode=["+requestCode+"]resultCode["+resultCode+"]", Toast.LENGTH_LONG).show();
-    	 if (resultCode != Activity.RESULT_OK) 
-    		 return;
-         if (requestCode == REQUEST_DATE) {
-        	 Log.i("FragmentDataPassFromFragment", "FragmentDataPassFromFragment");
-             Date date = (Date)data.getSerializableExtra(FragmentDataPassToFragment.EXTRA_DATE);
-             Toast.makeText(getContext(), "["+date+"]", Toast.LENGTH_LONG).show();
-            
-         }
+        if (resultCode != Activity.RESULT_OK) {
+            return;
+        }
+        
+        if (requestCode == REQUEST_DATE) {
+            Date date = (Date) data.getSerializableExtra(FragmentDataPassToFragment.EXTRA_DATE);
+            Toast.makeText(getContext(), "[" + date + "]"+"requestCode=["+requestCode+"]resultCode["+resultCode+"]", Toast.LENGTH_LONG).show();
+
+        }
 	}
 
 	private void clickFragmentDataPassFromBtn(){
         Intent intent=new Intent(getActivity(), FragmentDataPassToActivity.class);
         Bundle bundle = new Bundle();
         Date date=new Date();
-        Log.i("FragmentDataPassToFragment", date+"");
         bundle.putSerializable(FragmentDataPassToFragment.EXTRA_DATE, date);
         intent.putExtras(bundle);
-       // startActivity(intent);
         startActivityForResult(intent, REQUEST_DATE);
     }
 
