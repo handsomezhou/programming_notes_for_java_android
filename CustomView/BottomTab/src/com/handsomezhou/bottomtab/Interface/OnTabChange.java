@@ -7,7 +7,7 @@ package com.handsomezhou.bottomtab.Interface;
  */
 public interface OnTabChange {
 	public enum TAB_CHANGE_STATE{
-		TAB_SELECTED_UNDOCUSED,
+	    TAB_SELECTED_UNFOCUSED,
 		TAB_SELECTED_FOCUSED,
 		TAB_UNSELECTED,
 	}
