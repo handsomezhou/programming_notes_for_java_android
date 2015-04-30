@@ -44,7 +44,7 @@ public class TelephoneFragment extends BaseFragment {
 		case TAB_UNSELECTED:
 			Toast.makeText(getContext(), TAG+tabChangeState.toString(), Toast.LENGTH_SHORT).show();
 			break;
-		case TAB_SELECTED_UNDOCUSED:
+		case TAB_SELECTED_UNFOCUSED:
 			Toast.makeText(getContext(), TAG+tabChangeState.toString(), Toast.LENGTH_SHORT).show();
 			break;
 			

@@ -13,6 +13,8 @@ import com.handsomezhou.fragmentdemo.Interface.OnTabChange;
 import com.handsomezhou.fragmentdemo.Interface.OnTabChange.TAB_CHANGE_STATE;
 import com.handsomezhou.fragmentdemo.model.IconButtonData;
 
+
+
 public class BottomTabView extends LinearLayout implements OnClickListener{
     private static final int PADDING_DEFAULT=0;
     private static final int PADDING_LEFT_DEFAULT=0;
@@ -65,8 +67,8 @@ public class BottomTabView extends LinearLayout implements OnClickListener{
 	    mIconButtonData.add(iconButtonData);
 	    addIconButtonView(mIconButtonData.get(mIconButtonData.size()-1).getIconButtonView());
 	    setCurrentTab(mIconButtonData.get(0).getIconButtonValue().getTag());
-	    mIconButtonData.get(0).getIconButtonView().getIconIv().setBackgroundResource( mIconButtonData.get(0).getIconButtonValue().getIconSelectedUnfocused());
-	    setLastIconResId(mIconButtonData.get(0).getIconButtonValue().getIconSelectedUnfocused());
+	    mIconButtonData.get(0).getIconButtonView().getIconIv().setBackgroundResource( mIconButtonData.get(0).getIconButtonValue().getIconSelectedFocused());
+	    setLastIconResId(mIconButtonData.get(0).getIconButtonValue().getIconSelectedFocused());
 	    
 	    mIconButtonData.get(mIconButtonData.size()-1).getIconButtonView().setOnClickListener(this);
 	    mIconButtonData.get(mIconButtonData.size()-1).getIconButtonView().setTag(mIconButtonData.get(mIconButtonData.size()-1).getIconButtonValue().getTag());
@@ -82,8 +84,8 @@ public class BottomTabView extends LinearLayout implements OnClickListener{
 		setCurrentTab(tag);
 		for(IconButtonData ibd:mIconButtonData){
 			if(ibd.getIconButtonValue().getTag().equals(tag)){
-				ibd.getIconButtonView().getIconIv().setBackgroundResource(ibd.getIconButtonValue().getIconSelectedUnfocused());
-				setLastIconResId(ibd.getIconButtonValue().getIconSelectedUnfocused());
+				ibd.getIconButtonView().getIconIv().setBackgroundResource(ibd.getIconButtonValue().getIconSelectedFocused());
+				setLastIconResId(ibd.getIconButtonValue().getIconSelectedFocused());
 			}else{
 				ibd.getIconButtonView().getIconIv().setBackgroundResource(ibd.getIconButtonValue().getIconUnselected());
 			}
@@ -157,17 +159,17 @@ public class BottomTabView extends LinearLayout implements OnClickListener{
 		if(fromTab!=toTab){//change tab
 			setCurrentTab(toTab);
 			if(null!=mOnTabChange){
-				mOnTabChange.onChangeToTab(fromTab, toTab, TAB_CHANGE_STATE.TAB_SELECTED_UNDOCUSED);
+				mOnTabChange.onChangeToTab(fromTab, toTab, TAB_CHANGE_STATE.TAB_SELECTED_FOCUSED);
 				IconButtonData fromTabIconButtonData=getIconButtonData(fromTab);
 				if(null!=fromTabIconButtonData){
 					fromTabIconButtonData.getIconButtonView().getIconIv().setBackgroundResource(fromTabIconButtonData.getIconButtonValue().getIconUnselected());
 				}
 				IconButtonData toTabIconButtonData=getIconButtonData(toTab);
 				if(null!=toTabIconButtonData){
-					toTabIconButtonData.getIconButtonView().getIconIv().setBackgroundResource(toTabIconButtonData.getIconButtonValue().getIconSelectedUnfocused());
+					toTabIconButtonData.getIconButtonView().getIconIv().setBackgroundResource(toTabIconButtonData.getIconButtonValue().getIconSelectedFocused());
 				}
 				
-				setLastIconResId(toTabIconButtonData.getIconButtonValue().getIconSelectedUnfocused());
+				setLastIconResId(toTabIconButtonData.getIconButtonValue().getIconSelectedFocused());
 			}
 		}else{//click tab
 			if(null!=mOnTabChange){
@@ -181,7 +183,7 @@ public class BottomTabView extends LinearLayout implements OnClickListener{
 					}else{
 						toTabIconButtonData.getIconButtonView().getIconIv().setBackgroundResource(toTabIconButtonData.getIconButtonValue().getIconSelectedUnfocused());
 						setLastIconResId(toTabIconButtonData.getIconButtonValue().getIconSelectedUnfocused());
-						mOnTabChange.onClickTab(toTab,TAB_CHANGE_STATE.TAB_SELECTED_UNDOCUSED);
+						mOnTabChange.onClickTab(toTab,TAB_CHANGE_STATE.TAB_SELECTED_UNFOCUSED);
 					}
 				}
 			}
