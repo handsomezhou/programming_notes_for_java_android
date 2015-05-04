@@ -6,15 +6,14 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.handsomezhou.networkdemo.R;
-import com.handsomezhou.networkdemo.broadcast.NetworkChangeReceiver;
+import com.handsomezhou.networkdemo.broadcastreceiver.NetworkChangeReceiver;
+import com.handsomezhou.networkdemo.helper.NetworkHelper;
+import com.handsomezhou.networkdemo.helper.NetworkHelper.OnNetworkChange;
 import com.handsomezhou.networkdemo.service.NetworkDemoService;
-import com.handsomezhou.networkdemo.util.NetworkHelper;
-import com.handsomezhou.networkdemo.util.NetworkHelper.OnNetworkChange;
 import com.handsomezhou.networkdemo.util.NetworkUtil;
 import com.handsomezhou.networkdemo.util.NetworkUtil.NETWORK_TYPE;
 import com.handsomezhou.networkdemo.view.NetworkStateTipsView;
@@ -40,8 +39,8 @@ public class MainActivity extends Activity implements OnNetworkChange {
 
 	@Override
 	protected void onDestroy() {
+	    unregisterReceiver();
 		super.onDestroy();
-		unregisterReceiver();
 	}
 
 	/* Start: OnNetworkChange */

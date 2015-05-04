@@ -1,10 +1,10 @@
-package com.handsomezhou.networkdemo.broadcast;
+package com.handsomezhou.networkdemo.broadcastreceiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import com.handsomezhou.networkdemo.util.NetworkHelper;
+import com.handsomezhou.networkdemo.helper.NetworkHelper;
 
 public class NetworkChangeReceiver extends BroadcastReceiver {
 	private static final String TAG="NetworkChangeReceiver";

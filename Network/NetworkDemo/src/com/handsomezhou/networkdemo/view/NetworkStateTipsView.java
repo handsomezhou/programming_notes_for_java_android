@@ -1,7 +1,7 @@
 package com.handsomezhou.networkdemo.view;
 
 import com.handsomezhou.networkdemo.R;
-import com.handsomezhou.networkdemo.util.NetworkHelper;
+import com.handsomezhou.networkdemo.helper.NetworkHelper;
 import com.handsomezhou.networkdemo.util.NetworkUtil;
 import com.handsomezhou.networkdemo.util.StringUtil;
 import com.handsomezhou.networkdemo.util.NetworkUtil.NETWORK_TYPE;

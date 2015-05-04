@@ -1,10 +1,7 @@
 package com.handsomezhou.networkdemo.util;
 
-import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-
-import com.handsomezhou.networkdemo.R;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

@@ -1,9 +1,10 @@
-package com.handsomezhou.networkdemo.util;
+package com.handsomezhou.networkdemo.helper;
 
 import android.content.Context;
 import android.telephony.TelephonyManager;
 
 import  com.handsomezhou.networkdemo.application.NetWorkDemoApplication;
+import com.handsomezhou.networkdemo.util.NetworkUtil;
 import com.handsomezhou.networkdemo.util.NetworkUtil.NETWORK_TYPE;
 
 public class NetworkHelper {
@@ -14,7 +15,7 @@ public class NetworkHelper {
 
 	public static NetworkHelper getInstance(){
 		if (null == mInstance) {
-			mInstance = new NetworkHelper(NetWorkDemoApplication.getContextObject().getApplicationContext());
+			mInstance = new NetworkHelper(NetWorkDemoApplication.getContext().getApplicationContext());
 		}
 
 		return mInstance;

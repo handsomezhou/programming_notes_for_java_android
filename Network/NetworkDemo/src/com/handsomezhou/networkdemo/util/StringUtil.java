@@ -1,8 +1,6 @@
 package com.handsomezhou.networkdemo.util;
 
 import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
 
 import com.handsomezhou.networkdemo.R;

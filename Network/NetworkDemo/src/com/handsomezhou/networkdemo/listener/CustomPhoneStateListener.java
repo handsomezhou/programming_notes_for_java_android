@@ -1,6 +1,6 @@
 package com.handsomezhou.networkdemo.listener;
 
-import com.handsomezhou.networkdemo.util.NetworkHelper;
+import com.handsomezhou.networkdemo.helper.NetworkHelper;
 
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
