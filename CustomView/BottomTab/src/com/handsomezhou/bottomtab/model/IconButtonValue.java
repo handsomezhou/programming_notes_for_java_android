@@ -14,6 +14,12 @@ public class IconButtonValue {
     private int mIconUnselected;        // unselected Icon
     private int mText;// text
 
+    public IconButtonValue(Object tag, int iconSelectedUnfocused, int text) {
+        super();
+        initViewOption(tag, iconSelectedUnfocused, iconSelectedUnfocused, iconSelectedUnfocused, text);
+    }
+
+    
     public IconButtonValue(Object tag, int iconSelectedUnfocused, int iconUnselected, int text) {
         super();
         initViewOption(tag, iconSelectedUnfocused, iconSelectedUnfocused, iconUnselected, text);
