@@ -30,12 +30,16 @@
             android:name="com.handsomezhou.fragmentdemo.activity.AddressBookBottomTabActivity"
             android:label="@string/app_name" >
         </activity>
-         <activity
+        <activity
             android:name="com.handsomezhou.fragmentdemo.activity.FragmentDataPassFromActivity"
             android:label="@string/app_name" >
         </activity>
-             <activity
+        <activity
             android:name="com.handsomezhou.fragmentdemo.activity.FragmentDataPassToActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.handsomezhou.fragmentdemo.activity.GridViewActivity"
             android:label="@string/app_name" >
         </activity>
     </application>

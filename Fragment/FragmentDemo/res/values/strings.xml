@@ -7,10 +7,22 @@
     <string name="fragment_top_tab">fragment top tab</string>
     <string name="fragment_bottom_tab">fragment bottom tab</string>
     <string name="fragment_data_pass">fragment data pass</string>
+    <string name="fragment_grid_view">fragment grid view</string>
     <string name="telephone">电话</string>
     <string name="call">拨打</string>
     <string name="contacts">联系人</string>
     <string name="sms">短信</string>
     <string name="more">更多</string>
+    <string name="back">返回</string>
+    <string name="zero">zero</string>
+    <string name="one">one</string>
+    <string name="two">two</string>
+    <string name="three">three</string>
+    <string name="four">four</string>
+    <string name="five">five</string>
+    <string name="six">six</string>
+    <string name="seven">seven</string>
+    <string name="eight">eight</string>
+    <string name="nine">nine</string>
 
 </resources>

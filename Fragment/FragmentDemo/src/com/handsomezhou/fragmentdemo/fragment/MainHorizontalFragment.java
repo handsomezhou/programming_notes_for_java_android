@@ -11,11 +11,13 @@ import com.handsomezhou.fragmentdemo.R;
 import com.handsomezhou.fragmentdemo.activity.AddressBookBottomTabActivity;
 import com.handsomezhou.fragmentdemo.activity.AddressBookTopTabActivity;
 import com.handsomezhou.fragmentdemo.activity.FragmentDataPassFromActivity;
+import com.handsomezhou.fragmentdemo.activity.GridViewActivity;
 
 public class MainHorizontalFragment extends BaseFragment {
 	private Button mFragmentTopTabBtn;
 	private Button mFragmentBottomTabBtn;
 	private Button mFragmentDataPassBtn;
+	private Button mFragmentGridViewBtn;
 
 	@Override
 	protected void initData() {
@@ -30,6 +32,7 @@ public class MainHorizontalFragment extends BaseFragment {
 		mFragmentTopTabBtn = (Button) view.findViewById(R.id.fragment_top_tab_btn);
 		mFragmentBottomTabBtn = (Button) view.findViewById(R.id.fragment_bottom_tab_btn);
 		mFragmentDataPassBtn=(Button)view.findViewById(R.id.fragment_data_pass_btn);
+		mFragmentGridViewBtn=(Button)view.findViewById(R.id.fragment_grid_view_btn);
 		return view;
 
 	}
@@ -59,6 +62,14 @@ public class MainHorizontalFragment extends BaseFragment {
                 clickFragmentDataPass();
             }
         });
+		
+		mFragmentGridViewBtn.setOnClickListener(new View.OnClickListener() {
+            
+            @Override
+            public void onClick(View v) {
+                clickFragmentGridView();
+            }
+        });
 		return;
 
 	}
@@ -80,5 +91,12 @@ public class MainHorizontalFragment extends BaseFragment {
 	    Toast.makeText(getContext(), "fragment_data_pass", Toast.LENGTH_SHORT).show();
         Intent intent=new Intent(getContext(), FragmentDataPassFromActivity.class);
         startActivity(intent);
+	}
+	
+	private void clickFragmentGridView(){
+	    Toast.makeText(getContext(), "fragment_grid_view", Toast.LENGTH_SHORT).show();
+	    Intent intent=new Intent(getContext(), GridViewActivity.class);
+	    startActivity(intent);
+	    return;
 	}
 }
