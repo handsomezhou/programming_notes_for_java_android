@@ -44,7 +44,7 @@ public class GridViewFragment extends BaseFragment {
         mGridViewData = new ArrayList<IconButtonData>();
         /* Start: zero IconButtonData */
         IconButtonValue zeroIconButtonValue = new IconButtonValue(GRID_VIEW_TAG.ZERO,
-                R.drawable.zero_icon_selected_unfocused, R.drawable.zero_icon_unselected,
+                R.drawable.zero_icon_selected_unfocused,
                 R.string.zero);
         IconButtonData zeroIconButtonData = new IconButtonData(getContext(), zeroIconButtonValue);
         mGridViewData.add(zeroIconButtonData);
@@ -52,7 +52,7 @@ public class GridViewFragment extends BaseFragment {
 
         /* Start: one IconButtonData */
         IconButtonValue oneIconButtonValue = new IconButtonValue(GRID_VIEW_TAG.ONE,
-                R.drawable.one_icon_selected_unfocused, R.drawable.one_icon_unselected,
+                R.drawable.one_icon_selected_unfocused,
                 R.string.one);
         IconButtonData oneIconButtonData = new IconButtonData(getContext(), oneIconButtonValue);
         mGridViewData.add(oneIconButtonData);
@@ -60,7 +60,7 @@ public class GridViewFragment extends BaseFragment {
 
         /* Start: two IconButtonData */
         IconButtonValue twoIconButtonValue = new IconButtonValue(GRID_VIEW_TAG.TWO,
-                R.drawable.two_icon_selected_unfocused, R.drawable.two_icon_unselected,
+                R.drawable.two_icon_selected_unfocused,
                 R.string.two);
         IconButtonData twoIconButtonData = new IconButtonData(getContext(), twoIconButtonValue);
         mGridViewData.add(twoIconButtonData);
@@ -68,7 +68,7 @@ public class GridViewFragment extends BaseFragment {
 
         /* Start: three IconButtonData */
         IconButtonValue threeIconButtonValue = new IconButtonValue(GRID_VIEW_TAG.THREE,
-                R.drawable.three_icon_selected_unfocused, R.drawable.three_icon_unselected,
+                R.drawable.three_icon_selected_unfocused,
                 R.string.three);
         IconButtonData threeIconButtonData = new IconButtonData(getContext(), threeIconButtonValue);
         mGridViewData.add(threeIconButtonData);
@@ -76,7 +76,7 @@ public class GridViewFragment extends BaseFragment {
 
         /* Start: four IconButtonData */
         IconButtonValue fourIconButtonValue = new IconButtonValue(GRID_VIEW_TAG.FOUR,
-                R.drawable.four_icon_selected_unfocused, R.drawable.four_icon_unselected,
+                R.drawable.four_icon_selected_unfocused,
                 R.string.four);
         IconButtonData fourIconButtonData = new IconButtonData(getContext(), fourIconButtonValue);
         mGridViewData.add(fourIconButtonData);
@@ -84,7 +84,7 @@ public class GridViewFragment extends BaseFragment {
 
         /* Start: five IconButtonData */
         IconButtonValue fiveIconButtonValue = new IconButtonValue(GRID_VIEW_TAG.FIVE,
-                R.drawable.five_icon_selected_unfocused, R.drawable.five_icon_unselected,
+                R.drawable.five_icon_selected_unfocused,
                 R.string.five);
         IconButtonData fiveIconButtonData = new IconButtonData(getContext(), fiveIconButtonValue);
         mGridViewData.add(fiveIconButtonData);
@@ -92,7 +92,7 @@ public class GridViewFragment extends BaseFragment {
 
         /* Start: six IconButtonData */
         IconButtonValue sixIconButtonValue = new IconButtonValue(GRID_VIEW_TAG.SIX,
-                R.drawable.six_icon_selected_unfocused, R.drawable.six_icon_unselected,
+                R.drawable.six_icon_selected_unfocused,
                 R.string.six);
         IconButtonData sixIconButtonData = new IconButtonData(getContext(), sixIconButtonValue);
         mGridViewData.add(sixIconButtonData);
@@ -100,7 +100,7 @@ public class GridViewFragment extends BaseFragment {
 
         /* Start: seven IconButtonData */
         IconButtonValue sevenIconButtonValue = new IconButtonValue(GRID_VIEW_TAG.SEVEN,
-                R.drawable.seven_icon_selected_unfocused, R.drawable.seven_icon_unselected,
+                R.drawable.seven_icon_selected_unfocused,
                 R.string.seven);
         IconButtonData sevenIconButtonData = new IconButtonData(getContext(), sevenIconButtonValue);
         mGridViewData.add(sevenIconButtonData);
@@ -108,7 +108,7 @@ public class GridViewFragment extends BaseFragment {
 
         /* Start: eight IconButtonData */
         IconButtonValue eightIconButtonValue = new IconButtonValue(GRID_VIEW_TAG.EIGHT,
-                R.drawable.eight_icon_selected_unfocused, R.drawable.eight_icon_unselected,
+                R.drawable.eight_icon_selected_unfocused,
                 R.string.eight);
         IconButtonData eightIconButtonData = new IconButtonData(getContext(), eightIconButtonValue);
         mGridViewData.add(eightIconButtonData);
@@ -116,7 +116,7 @@ public class GridViewFragment extends BaseFragment {
 
         /* Start: nine IconButtonData */
         IconButtonValue nineIconButtonValue = new IconButtonValue(GRID_VIEW_TAG.NINE,
-                R.drawable.nine_icon_selected_unfocused, R.drawable.nine_icon_unselected,
+                R.drawable.nine_icon_selected_unfocused,
                 R.string.nine);
         IconButtonData nineIconButtonData = new IconButtonData(getContext(), nineIconButtonValue);
         mGridViewData.add(nineIconButtonData);
@@ -152,7 +152,7 @@ public class GridViewFragment extends BaseFragment {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                IconButtonData iconButtonData= mGridViewData.get(position);
+                IconButtonData iconButtonData = mGridViewData.get(position);
                 ViewSelect(iconButtonData);
             }
         });
@@ -169,7 +169,7 @@ public class GridViewFragment extends BaseFragment {
 
         switch ((GRID_VIEW_TAG) iconButtonData.getIconButtonValue().getTag()) {
             case ZERO:
-               
+
                 break;
             case ONE:
 
@@ -202,8 +202,9 @@ public class GridViewFragment extends BaseFragment {
             default:
                 break;
         }
-        
-        Toast.makeText(getContext(), iconButtonData.getIconButtonValue().getTag().toString(), Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(getContext(), iconButtonData.getIconButtonValue().getTag().toString(),
+                Toast.LENGTH_SHORT).show();
     }
 
 }
