@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="match_parent" >
 
     <Button
         android:id="@+id/back_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" 
         android:layout_alignParentTop="true"
         android:gravity="center"
         android:text="@string/back" />
@@ -16,19 +16,16 @@
     <GridView
         android:id="@+id/grid_view_grid_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/back_btn"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
         android:columnWidth="80dp"
-        android:horizontalSpacing="15dp"
+        android:horizontalSpacing="20dp"
         android:listSelector="@android:color/transparent"
         android:numColumns="auto_fit"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         android:scrollbars="none"
-        android:verticalSpacing="20dp" >
+        android:verticalSpacing="24dp" >
     </GridView>
 
 </RelativeLayout>

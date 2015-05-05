@@ -2,22 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="80dp"
     android:layout_height="80dp"
-    android:background="@drawable/btn_bottom"
+    android:background="@drawable/icon_button_grid_item_selector"
     android:gravity="center_vertical|center_horizontal"
     android:orientation="vertical"
-    android:paddingTop="5dp" >
+    android:paddingTop="8dp" >
 
     <ImageView
         android:id="@+id/icon_image_view"
-        android:layout_width="@dimen/grid_view_icon_width"
-        android:layout_height="55dp"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
         android:gravity="center_horizontal|center_vertical"
         android:contentDescription="@string/app_name"/>
 
     <TextView
         android:id="@+id/title_text_view"
-        android:layout_width="fill_parent"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
         android:gravity="center_horizontal|center_vertical"
         android:singleLine="true"
         android:textSize="12sp" />
