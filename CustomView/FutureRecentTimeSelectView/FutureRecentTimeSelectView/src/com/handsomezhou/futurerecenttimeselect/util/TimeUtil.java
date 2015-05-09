@@ -9,6 +9,40 @@ public class TimeUtil {
 	public static final int MILLISECOND_PER_SECOND=1000; 	//1s=1000ms
 	
 	/**
+     * {@link Calendar#YEAR}
+     * @return
+     */
+    public static int getYear(){
+        Calendar calendar = Calendar.getInstance();
+        int year=calendar.get(Calendar.YEAR);
+        
+        return year;
+    }
+    
+
+    /**
+     * {@link Calendar#MONTH}
+     * @return
+     */
+    public static int getMonth(){
+        Calendar calendar = Calendar.getInstance();
+        int month=calendar.get(Calendar.MONTH);
+        
+        return month;
+    }
+    
+    /**
+     * {@link Calendar#DAY_OF_MONTH}
+     * @return
+     */
+    public static int getDayOfMonth(){
+        Calendar calendar = Calendar.getInstance();
+        int dayOfMonth=calendar.get(Calendar.DAY_OF_MONTH);
+        
+        return dayOfMonth;
+    }
+    
+	/**
 	 * {@link Calendar#HOUR_OF_DAY}
 	 * @return
 	 */

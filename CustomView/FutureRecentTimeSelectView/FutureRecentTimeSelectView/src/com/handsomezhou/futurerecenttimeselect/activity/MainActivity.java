@@ -15,6 +15,7 @@ import com.handsomezhou.futurerecenttimeselect.model.AlarmMsg;
 import com.handsomezhou.futurerecenttimeselect.model.TimeItemValue;
 import com.handsomezhou.futurerecenttimeselect.util.AlarmUtil;
 import com.handsomezhou.futurerecenttimeselect.util.TimeItemUtil;
+import com.handsomezhou.futurerecenttimeselect.util.TimeUtil;
 import com.handsomezhou.futurerecenttimeselect.util.ViewUtil;
 import com.handsomezhou.futurerecenttimeselect.view.FutureRecentTimeSelectView;
 import com.handsomezhou.futurerecenttimeselect.view.FutureRecentTimeSelectView.OnFutureRecentTimeSelectView;
@@ -99,7 +100,14 @@ public class MainActivity extends Activity implements OnFutureRecentTimeSelectVi
 		}
 		
 		String[] dayRelativeToToday=mContext.getResources().getStringArray(R.array.day_relative_to_today);
-		Toast.makeText(mContext,dayRelativeToToday[timeItemValue.getDayItemValue()]+":"+timeItemValue.getHourItemValue()+":"+timeItemValue.getMinuteItemValue(), Toast.LENGTH_SHORT).show();
+		int year=TimeUtil.getYear();
+		int month=TimeUtil.getMonth();
+		int dayOfMonth=TimeUtil.getDayOfMonth()+timeItemValue.getDayItemValue();
+		int hourOfDay=timeItemValue.getHourItemValue();
+		int minute=timeItemValue.getMinuteItemValue();
+		
+		
+		Toast.makeText(mContext,dayRelativeToToday[timeItemValue.getDayItemValue()]+":"+timeItemValue.getHourItemValue()+":"+timeItemValue.getMinuteItemValue()+"["+year+"-"+month+"-"+dayOfMonth+" "+hourOfDay+":"+minute+"]", Toast.LENGTH_SHORT).show();
 		
 		mAlarmMsg.setType(0);
 		mAlarmMsg.setText("text");
