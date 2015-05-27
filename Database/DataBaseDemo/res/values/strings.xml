@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DataBaseDemo</string>
+    <string name="action_settings">Settings</string>
+    <string name="create_data_base">create data base</string>
+    <string name="add_data">add data</string>
+    <string name="update_data">update data</string>
+    <string name="delete_data">delete data</string>
+
+</resources>
