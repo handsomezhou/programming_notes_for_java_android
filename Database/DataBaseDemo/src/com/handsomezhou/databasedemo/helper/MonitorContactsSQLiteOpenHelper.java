@@ -26,17 +26,17 @@ public class MonitorContactsSQLiteOpenHelper extends SQLiteOpenHelper {
             + Table.CALL_RECORD_TABLE
             + "("
             + CallRecordColumns._ID + " integer primary key autoincrement,"
-            + CallRecordColumns.CALL_RECORD_ID + " integer unique,"
+            + CallRecordColumns.CALL_RECORD_ID + " text unique,"
             + CallRecordColumns.MONITOR_PHONE_NUMBER + " text,"
             + CallRecordColumns.CALL_TYPE + " integer,"
             + CallRecordColumns.START_TIME + " text,"
             + CallRecordColumns.END_TIME + " text "
             + ")";
 
-    private static final String CREATE_CALL_CONTACTS = "create table " + Table.CALL_CONTACTS
+    private static final String CREATE_CALL_CONTACTS = "create table " + Table.CALL_CONTACTS_TABLE
             + "("
             + CallContacts._ID + " integer primary key autoincrement,"
-            + CallContacts.CALL_RECORD_ID + " integer,"
+            + CallContacts.CALL_RECORD_ID + " text,"
             + CallContacts.NAME + " text,"
             + CallContacts.PHONE_NUMBER + " text "
             + ")";
@@ -60,7 +60,7 @@ public class MonitorContactsSQLiteOpenHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
        db.execSQL("drop table if exists "+Table.MONITOR_CONFIGURATION_TABLE);
        db.execSQL("drop table if exists "+Table.CALL_RECORD_TABLE);
-       db.execSQL("drop table if exists "+Table.CALL_CONTACTS);
+       db.execSQL("drop table if exists "+Table.CALL_CONTACTS_TABLE);
        
        onCreate(db);
     }

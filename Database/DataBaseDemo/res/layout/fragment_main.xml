@@ -38,5 +38,14 @@
         android:layout_below="@id/update_data_btn"
         android:layout_centerHorizontal="true"
         android:text="@string/delete_data" />
+    
+    <Button
+        android:id="@+id/query_data_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/delete_data_btn"
+        android:layout_centerHorizontal="true"
+        android:text="@string/query_data" />
+    
 
 </RelativeLayout>

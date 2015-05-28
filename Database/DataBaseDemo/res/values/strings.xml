@@ -7,5 +7,6 @@
     <string name="add_data">add data</string>
     <string name="update_data">update data</string>
     <string name="delete_data">delete data</string>
+    <string name="query_data">query data</string>
 
 </resources>
