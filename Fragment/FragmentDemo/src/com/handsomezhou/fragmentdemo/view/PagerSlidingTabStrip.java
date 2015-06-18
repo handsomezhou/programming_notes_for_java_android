@@ -188,6 +188,22 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 		this.delegatePageListener = listener;
 	}
 
+	/*start: add by handsomezhou*/
+    public void setCurrentItem(final int position){
+        int childCount=pager.getChildCount();
+
+        if((position<0)||(position>=childCount)){
+           return;
+        }
+
+        if(pager.getCurrentItem()!=position){
+            pager.setCurrentItem(position);
+        }
+
+        return;
+    }
+    /*end: add by handsomezhou*/
+    
 	public void notifyDataSetChanged() {
 
 		tabsContainer.removeAllViews();
