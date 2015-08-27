@@ -7,10 +7,14 @@ import com.handsomezhou.futurerecenttimeselect.model.TimeItemValue;
 
 public class TimeItemUtil {
 	public static final String TAG="TimeItemUtil";
-	public static final int[] dayPoint={0,1,2};
-	public static final int[] hourPoint={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23};
-	public static final int[] minutePoint={0,10,20,30,40,50};
-	public static final int MINUTE_MIN_APPOINTMENT_TIME=10;
+	public static final int[] dayPoint = { 0, 1, 2 };//consistent with the day_relative_to_today of array resources
+	public static final int[] hourPoint = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+			11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 };//consistent with the hour of array resources
+	public static final int[] minutePoint = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+			11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27,
+			28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44,
+			45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59 };//consistent with the minute of array resources
+	public static final int MINUTE_MIN_APPOINTMENT_TIME = minutePoint[1]-minutePoint[0];
 	
 	public static TimeItemIndex correctTheTimeItem(TimeItemIndex currentItemIndex){
 		TimeItemValue timeItemValue=null;
