@@ -2,11 +2,11 @@ package com.handsomezhou.fragmentdemo.model;
 
 import android.support.v4.app.Fragment;
 
-public class AddressBookView {
+public class PartnerView {
 	private Object mTag;
 	private Fragment mFragment;
 	
-	public AddressBookView(Object tag, Fragment fragment) {
+	public PartnerView(Object tag, Fragment fragment) {
 		super();
 		mTag = tag;
 		mFragment = fragment;

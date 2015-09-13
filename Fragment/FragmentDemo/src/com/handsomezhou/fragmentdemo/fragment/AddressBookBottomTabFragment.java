@@ -14,14 +14,14 @@ import android.view.ViewGroup;
 import com.handsomezhou.fragmentdemo.R;
 import com.handsomezhou.fragmentdemo.Interface.OnTabChange;
 import com.handsomezhou.fragmentdemo.adapter.AddressBookFragmentPagerAdapter;
-import com.handsomezhou.fragmentdemo.model.AddressBookView;
+import com.handsomezhou.fragmentdemo.model.PartnerView;
 import com.handsomezhou.fragmentdemo.model.IconButtonData;
 import com.handsomezhou.fragmentdemo.model.IconButtonValue;
 import com.handsomezhou.fragmentdemo.view.BottomTabView;
 import com.handsomezhou.fragmentdemo.view.CustomViewPager;
 
 public class AddressBookBottomTabFragment extends BaseFragment implements OnTabChange{	
-	private List<AddressBookView> mAddressBookViews;
+	private List<PartnerView> mAddressBookViews;
 	private BottomTabView mBottomTabView;
 	private CustomViewPager mCustomViewPager;
 	private AddressBookFragmentPagerAdapter mAddressBookFragmentPagerAdapter;
@@ -35,25 +35,25 @@ public class AddressBookBottomTabFragment extends BaseFragment implements OnTabC
 	@Override
 	protected void initData() {
 		setContext(getActivity());
-		mAddressBookViews=new ArrayList<AddressBookView>();
+		mAddressBookViews=new ArrayList<PartnerView>();
 		
 		/*Start: call view*/
-		AddressBookView callAddressBookView=new AddressBookView(BOTTOM_TAB_TAG.CALL, new TelephoneFragment());
+		PartnerView callAddressBookView=new PartnerView(BOTTOM_TAB_TAG.CALL, new TelephoneFragment());
 		mAddressBookViews.add(callAddressBookView);
 		/*End: call view*/
 		
 		/*Start: contacts view*/
-		AddressBookView contactsAddressBookView=new AddressBookView(BOTTOM_TAB_TAG.CONTACTS, new ContactsFragment());
+		PartnerView contactsAddressBookView=new PartnerView(BOTTOM_TAB_TAG.CONTACTS, new ContactsFragment());
 		mAddressBookViews.add(contactsAddressBookView);
 		/*End: contacts view*/
 		
 		/*Start: contacts view*/
-		AddressBookView smsAddressBookView=new AddressBookView(BOTTOM_TAB_TAG.SMS, new SmsFragment());
+		PartnerView smsAddressBookView=new PartnerView(BOTTOM_TAB_TAG.SMS, new SmsFragment());
 		mAddressBookViews.add(smsAddressBookView);
 		/*End: contacts view*/
 		
 		/*Start: contacts view*/
-		AddressBookView moreAddressBookView=new AddressBookView(BOTTOM_TAB_TAG.MORE, new MoreFragment());
+		PartnerView moreAddressBookView=new PartnerView(BOTTOM_TAB_TAG.MORE, new MoreFragment());
 		mAddressBookViews.add(moreAddressBookView);
 		/*End: contacts view*/
 		
@@ -61,7 +61,7 @@ public class AddressBookBottomTabFragment extends BaseFragment implements OnTabC
 
 	@Override
 	protected View initView(LayoutInflater inflater, ViewGroup container) {
-		View view=inflater.inflate(R.layout.fragment_address_book_bottom_tab, mBottomTabView, false);
+		View view=inflater.inflate(R.layout.fragment_address_book_bottom_tab, container, false);
 		mCustomViewPager=(CustomViewPager)view.findViewById(R.id.custom_view_pager);
 		mCustomViewPager.setPagingEnabled(true);
 		
@@ -105,7 +105,7 @@ public class AddressBookBottomTabFragment extends BaseFragment implements OnTabC
 			@Override
 			public void onPageSelected(int pos) {
 				
-				AddressBookView addressBookView=mAddressBookViews.get(pos);
+				PartnerView addressBookView=mAddressBookViews.get(pos);
 				//Toast.makeText(getContext(),addressBookView.getTag().toString()+"+++" , Toast.LENGTH_LONG).show();
 				mBottomTabView.setCurrentTabItem(addressBookView.getTag());
 			}
