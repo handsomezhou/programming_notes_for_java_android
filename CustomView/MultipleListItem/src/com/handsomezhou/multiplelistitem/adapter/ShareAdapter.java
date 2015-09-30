@@ -56,18 +56,14 @@ public class ShareAdapter extends ArrayAdapter<Shape> {
                 case ShapeType.CIRCLE:
                     view=LayoutInflater.from(mContext).inflate(R.layout.circle_list_item, null);
                     viewHolderCircle=new ViewHolderCircle();
-                    viewHolderCircle.mCircleIv=(ImageView) view.findViewById(R.id.circle_image_view);
-                    viewHolderCircle.mAreaTv=(TextView)view.findViewById(R.id.area_text_view);
-                    viewHolderCircle.mPerimeterTv=(TextView)view.findViewById(R.id.perimeter_text_view);                    
+                    findViewHolder(view, viewHolderCircle);                 
                     view.setTag(viewHolderCircle);
                     
                     break;
                 case ShapeType.TRIANGLE:
                     view=LayoutInflater.from(mContext).inflate(R.layout.triangle_list_item, null);
                     viewHolderTriangle=new ViewHolderTriangle();
-                    viewHolderTriangle.mTriangleIv=(ImageView) view.findViewById(R.id.triangle_image_view);
-                    viewHolderTriangle.mAreaTv=(TextView)view.findViewById(R.id.area_text_view);
-                    viewHolderTriangle.mPerimeterTv=(TextView)view.findViewById(R.id.perimeter_text_view); 
+                    findViewHolder(view, viewHolderTriangle);
                     view.setTag(viewHolderTriangle);
                     
                     break;
@@ -75,9 +71,7 @@ public class ShareAdapter extends ArrayAdapter<Shape> {
                 default:
                     view=LayoutInflater.from(mContext).inflate(R.layout.rectangle_list_item, null);
                     viewHolderRectangle=new ViewHolderRectangle();
-                    viewHolderRectangle.mRectangleIv=(ImageView)view.findViewById(R.id.rectangle_image_view);
-                    viewHolderRectangle.mAreaTv=(TextView)view.findViewById(R.id.area_text_view);
-                    viewHolderRectangle.mPerimeterTv=(TextView)view.findViewById(R.id.perimeter_text_view);
+                    findViewHolder(view, viewHolderRectangle);
                     view.setTag(viewHolderRectangle);
                     break;
             }
@@ -108,9 +102,7 @@ public class ShareAdapter extends ArrayAdapter<Shape> {
             if(null==viewHolderCircle){
                 view=LayoutInflater.from(mContext).inflate(R.layout.circle_list_item, null);
                 viewHolderCircle=new ViewHolderCircle();
-                viewHolderCircle.mCircleIv=(ImageView) view.findViewById(R.id.circle_image_view);
-                viewHolderCircle.mAreaTv=(TextView)view.findViewById(R.id.area_text_view);
-                viewHolderCircle.mPerimeterTv=(TextView)view.findViewById(R.id.perimeter_text_view);                    
+                findViewHolder(view, viewHolderCircle);
                 view.setTag(viewHolderCircle);
             }
             viewHolderCircle.mCircleIv.setBackgroundResource(R.drawable.ic_launcher);
@@ -135,9 +127,7 @@ public class ShareAdapter extends ArrayAdapter<Shape> {
             if(null==viewHolderTriangle){
                 view=LayoutInflater.from(mContext).inflate(R.layout.triangle_list_item, null);
                 viewHolderTriangle=new ViewHolderTriangle();
-                viewHolderTriangle.mTriangleIv=(ImageView) view.findViewById(R.id.triangle_image_view);
-                viewHolderTriangle.mAreaTv=(TextView)view.findViewById(R.id.area_text_view);
-                viewHolderTriangle.mPerimeterTv=(TextView)view.findViewById(R.id.perimeter_text_view); 
+                findViewHolder(view, viewHolderTriangle);
                 view.setTag(viewHolderTriangle);
             }
             
@@ -163,9 +153,7 @@ public class ShareAdapter extends ArrayAdapter<Shape> {
             if(null==viewHolderRectangle){
                 view=LayoutInflater.from(mContext).inflate(R.layout.rectangle_list_item, null);
                 viewHolderRectangle=new ViewHolderRectangle();
-                viewHolderRectangle.mRectangleIv=(ImageView)view.findViewById(R.id.rectangle_image_view);
-                viewHolderRectangle.mAreaTv=(TextView)view.findViewById(R.id.area_text_view);
-                viewHolderRectangle.mPerimeterTv=(TextView)view.findViewById(R.id.perimeter_text_view);
+                findViewHolder(view, viewHolderRectangle);
                 view.setTag(viewHolderRectangle);
             }
             
@@ -242,4 +230,50 @@ public class ShareAdapter extends ArrayAdapter<Shape> {
         TextView mPerimeterTv;
     }
 
+    private void findViewHolder(View root, ViewHolderRectangle viewHolderRectangle)
+    {
+    	do{
+    		if((null==root)||(null==viewHolderRectangle)){
+    			break;
+    		}
+    		
+    		  viewHolderRectangle.mRectangleIv=(ImageView)root.findViewById(R.id.rectangle_image_view);
+              viewHolderRectangle.mAreaTv=(TextView)root.findViewById(R.id.area_text_view);
+              viewHolderRectangle.mPerimeterTv=(TextView)root.findViewById(R.id.perimeter_text_view);
+    		
+    	}while(false);
+    	
+    	return;
+    }
+    
+    private void findViewHolder(View root, ViewHolderCircle viewHolderCircle)
+    {
+    	do{
+    		if((null==root)||(null==viewHolderCircle)){
+    			break;
+    		}
+    		
+    		viewHolderCircle.mCircleIv=(ImageView) root.findViewById(R.id.circle_image_view);
+            viewHolderCircle.mAreaTv=(TextView)root.findViewById(R.id.area_text_view);
+            viewHolderCircle.mPerimeterTv=(TextView)root.findViewById(R.id.perimeter_text_view);
+    	}while(false);
+    	
+    	return;
+    }
+    
+    private void findViewHolder(View root, ViewHolderTriangle viewHolderTriangle)
+    {
+    	do{
+    		if((null==root)||(null==viewHolderTriangle)){
+    			break;
+    		}
+    		
+    		 viewHolderTriangle.mTriangleIv=(ImageView) root.findViewById(R.id.triangle_image_view);
+             viewHolderTriangle.mAreaTv=(TextView)root.findViewById(R.id.area_text_view);
+             viewHolderTriangle.mPerimeterTv=(TextView)root.findViewById(R.id.perimeter_text_view); 
+    		
+    	}while(false);
+    	
+    	return;
+    }
 }
