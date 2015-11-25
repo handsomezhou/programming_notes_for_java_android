@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">FutureRecentTimeSelectView</string>
+    <string name="action_settings">Settings</string>
+    <string name="future_recent_time_select">future recent time select</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="exit_dialog_cancel">取消</string>
+    <string name="exit_dialog_ok">确定</string>
+    <string name="now">现在</string>
+    <string name="today">今天</string>
+    <string name="hour_suffix">点</string>
+    <string name="minute_suffix">分</string>
+    <string name="date_fromat">MM月dd日EEEE</string>
+
+</resources>
