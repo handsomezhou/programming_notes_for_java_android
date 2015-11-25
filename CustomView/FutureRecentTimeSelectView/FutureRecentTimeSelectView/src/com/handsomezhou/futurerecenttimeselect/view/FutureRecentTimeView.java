@@ -1,7 +1,12 @@
 package com.handsomezhou.futurerecenttimeselect.view;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import kankan.wheel.widget.OnWheelScrollListener;
+import kankan.wheel.widget.OnWheelClickedListener;
 import kankan.wheel.widget.WheelView;
 import kankan.wheel.widget.adapters.ArrayWheelAdapter;
 import android.content.Context;
@@ -18,11 +23,12 @@ import com.handsomezhou.futurerecenttimeselectview.R;
 
 public class FutureRecentTimeView extends LinearLayout{
 	public static final String TAG="FutureRecentTimeView";
-	public static final int WHEEL_VIEW_VISIBLE_ITEMS=5;
+	public static final int WHEEL_VIEW_VISIBLE_ITEMS=7;
 	private Context mContext;
 	private OnFutureRecentTimeView mOnFutureRecentTimeView;
 	private View mFutureRecentTimeView;
-	private String[] mDayStrings;
+//	private String[] mDayStrings;
+	private List<String> mDayStrings;
 	private String[] mHourStrings;
 	private String[] mMinuteStrings;
 	/*private List<String> mDayList;
@@ -79,9 +85,9 @@ public class FutureRecentTimeView extends LinearLayout{
 	}
 	
 	private void initData(){
-		mDayStrings=mContext.getResources().getStringArray(R.array.day_relative_to_today);
-		//mDayList=Arrays.asList(dayStrings);
-		
+		mDayStrings=new ArrayList<String>();
+		String[] dayStrings=mContext.getResources().getStringArray(R.array.day_relative_to_today);
+		mDayStrings = Arrays.asList(dayStrings);
 		mHourStrings=mContext.getResources().getStringArray(R.array.hour);
 		//mHourList=Arrays.asList(hourStrings);
 		
@@ -105,7 +111,8 @@ public class FutureRecentTimeView extends LinearLayout{
 		
 		mDayWheelView=(WheelView) mFutureRecentTimeView.findViewById(R.id.day_wheel_view);
 		mDayWheelView.setVisibleItems(WHEEL_VIEW_VISIBLE_ITEMS);
-		mDayWheelAdapter=new ArrayWheelAdapter<String>(mContext, mDayStrings);
+		
+		mDayWheelAdapter=new ArrayWheelAdapter<String>(mContext,  (String[])mDayStrings.toArray(new String[mDayStrings.size()]));
 		mDayWheelAdapter.setItemResource(R.layout.wheel_text_item);
 		mDayWheelAdapter.setItemTextResource(R.id.text);
 		mDayWheelView.setViewAdapter(mDayWheelAdapter);
@@ -132,9 +139,15 @@ public class FutureRecentTimeView extends LinearLayout{
 	private void initListener(){
 		//mDayWheelView.seton
 		mDayWheelView.addScrollingListener(dayWheelViewScrollListener);
+		mDayWheelView.addClickingListener(dayWheelClickedListener);
+
 		//mDayWheelView.addChangingListener(dayWheelViewChangedListener);
 		mHourWheelView.addScrollingListener(hourWheelViewScrollListener);
+		mHourWheelView.addClickingListener(hourWheelClickedListener);
+		
 		mMinuteWheelView.addScrollingListener(minuteWheelViewScrollListener);
+		mMinuteWheelView.addClickingListener(minuteWheelClickedListener);
+
 		
 		correctTheTime();
 		
@@ -179,6 +192,25 @@ public class FutureRecentTimeView extends LinearLayout{
 		}
 	};
 	
+	private OnWheelClickedListener dayWheelClickedListener=new OnWheelClickedListener() {
+		
+		@Override
+		public void onItemClicked(WheelView wheel, int itemIndex) {
+			if(null==wheel){
+				return;
+			}
+			Log.i(TAG, "wheel.getCurrentItem() "+wheel.getCurrentItem()+"  itemIndex "+itemIndex);
+			mLastTimeItem.setDayItemIndex(mDayWheelView.getCurrentItem());
+			mDayWheelView.setCurrentItem(itemIndex);
+			mCurrentItem.setDayItemIndex(itemIndex);
+			if(mCurrentItem.getDayItemIndex()==mLastTimeItem.getDayItemIndex()){
+				return;
+			}
+			
+			correctTheTime();
+		}
+	};
+	
 	private OnWheelScrollListener hourWheelViewScrollListener=new OnWheelScrollListener() {
 		
 		@Override
@@ -204,6 +236,25 @@ public class FutureRecentTimeView extends LinearLayout{
 			correctTheTime();
 			//Log.i(TAG, "onScrollingFinished mHourLastItem["+mHourLastItem+"]"+"mHourCurrentItem["+mHourCurrentItem+"]");
 			
+		}
+	};
+	
+	private OnWheelClickedListener hourWheelClickedListener=new OnWheelClickedListener() {
+		
+		@Override
+		public void onItemClicked(WheelView wheel, int itemIndex) {
+			if(null==wheel){
+				return;
+			}
+			Log.i(TAG, "wheel.getCurrentItem() "+wheel.getCurrentItem()+"  itemIndex "+itemIndex);
+			mLastTimeItem.setHourItemIndex(mHourWheelView.getCurrentItem());
+			mHourWheelView.setCurrentItem(itemIndex);
+			mCurrentItem.setHourItemIndex(itemIndex);
+			if(mCurrentItem.getHourItemIndex()==mLastTimeItem.getHourItemIndex()){
+				return;
+			}
+			
+			correctTheTime();
 		}
 	};
 	
@@ -234,6 +285,24 @@ public class FutureRecentTimeView extends LinearLayout{
 		}
 	};
 	
+	private OnWheelClickedListener minuteWheelClickedListener=new OnWheelClickedListener() {
+		
+		@Override
+		public void onItemClicked(WheelView wheel, int itemIndex) {
+			if(null==wheel){
+				return;
+			}
+			Log.i(TAG, "wheel.getCurrentItem() "+wheel.getCurrentItem()+"  itemIndex "+itemIndex);
+			mLastTimeItem.setMinuteItemIndex(wheel.getCurrentItem());
+			mMinuteWheelView.setCurrentItem(itemIndex);
+			mCurrentItem.setMinuteItemIndex(itemIndex);
+			if(mCurrentItem.getMinuteItemIndex()==mLastTimeItem.getMinuteItemIndex()){
+				return;
+			}
+			
+			correctTheTime();
+		}
+	};
 	private void correctTheTime() {
 		TimeItemIndex currentItem = null;
 
@@ -247,11 +316,11 @@ public class FutureRecentTimeView extends LinearLayout{
 		
 		Log.i(TAG,correctItem.getDayItemIndex()+";"+correctItem.getHourItemIndex()+";" +correctItem.getMinuteItemIndex());
 		if(null!=correctItem){
-			updateView(correctItem);
+			refreshWheelView(correctItem);
 		}
 	}
 	
-	private void updateView(TimeItemIndex timeItem){
+	private void refreshWheelView(TimeItemIndex timeItem){
 		if(null==timeItem){
 			return;
 		}
@@ -262,6 +331,4 @@ public class FutureRecentTimeView extends LinearLayout{
 		mMinuteWheelView.setCurrentItem(timeItem.getMinuteItemIndex());
 		//Log.i(TAG, "updateView===["+mDayWheelView.getCurrentItem()+"]["+mHourWheelView.getCurrentItem()+"]["+mMinuteWheelView.getCurrentItem()+"]");
 	}
-	
-	
 }
