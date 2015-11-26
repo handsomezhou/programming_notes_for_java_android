@@ -1,13 +1,17 @@
 package com.handsomezhou.futurerecenttimeselect.activity;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.handsomezhou.futurerecenttimeselect.model.TimeItemIndex;
+import com.handsomezhou.futurerecenttimeselect.util.TimeItemUtil;
 import com.handsomezhou.futurerecenttimeselect.util.ViewUtil;
 import com.handsomezhou.futurerecenttimeselect.view.FutureRecentTimeSelectView;
 import com.handsomezhou.futurerecenttimeselect.view.FutureRecentTimeSelectView.OnFutureRecentTimeSelectView;
@@ -84,32 +88,18 @@ public class MainActivity extends Activity implements OnFutureRecentTimeSelectVi
 		return;
 	}
 	
+	@SuppressLint("SimpleDateFormat")
 	private void futureRecentTimeSelectViewOk(TimeItemIndex timeItemIndex){
 		if(null==timeItemIndex){
 			return;
 		}
 		
-		Toast.makeText(mContext,timeItemIndex.getDayItemIndex()+";"+timeItemIndex.getHourItemIndex()+";"+timeItemIndex.getMinuteItemIndex(), Toast.LENGTH_SHORT).show();
-
-	/*	if(null==timeItemValue){
-			return;
-		}
+		long timeMillis=TimeItemUtil.getTimeMillis(timeItemIndex);
+		Date date=new Date(timeMillis);
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String time = df.format(date);
 		
-		int year=TimeUtil.getYear();
-		int month=TimeUtil.getMonth();
-		int dayOfMonth=TimeUtil.getDayOfMonth()+timeItemValue.getDayItemValue();
-		int hourOfDay=timeItemValue.getHourItemValue();
-		int minute=timeItemValue.getMinuteItemValue();
-		
-		
-		//Toast.makeText(mContext,dayRelativeToToday[timeItemValue.getDayItemValue()]+":"+timeItemValue.getHourItemValue()+":"+timeItemValue.getMinuteItemValue()+"["+year+"-"+month+"-"+dayOfMonth+" "+hourOfDay+":"+minute+"]", Toast.LENGTH_SHORT).show();
-		Toast.makeText(mContext,timeItemValue.getDayItemValue()+":"+timeItemValue.getHourItemValue()+":"+timeItemValue.getMinuteItemValue()+"["+year+"-"+month+"-"+dayOfMonth+" "+hourOfDay+":"+minute+"]", Toast.LENGTH_SHORT).show();
-		
-		
-		
-		
-		long triggerAtMillis=TimeItemUtil.getTimeInMillis(timeItemValue);*/
-	
+		Toast.makeText(mContext,timeItemIndex.getDayItemIndex()+";"+timeItemIndex.getHourItemIndex()+";"+timeItemIndex.getMinuteItemIndex()+"time["+time+"]", Toast.LENGTH_SHORT).show();
 		
 		ViewUtil.hideView(mFutureRecentTimeSelectView);
 	}

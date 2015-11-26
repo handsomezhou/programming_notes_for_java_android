@@ -56,6 +56,41 @@ public class TimeItemUtil {
 		return correctTimeItemIndex;
 	}
 	
+	public static long getTimeMillis(final TimeItemIndex timeItemIndex) {
+        long millis = System.currentTimeMillis();
+        do {
+            if (timeItemIndex.getDayItemIndex() == 0) {// now
+                break;
+            }
+            //note:It's necessary that System.currentTimeMillis behind TimeUtil.getMilliSecondOfDay().
+            long todayStartTimeMillis=(-(long)TimeUtil.getMilliSecondOfDay()+System.currentTimeMillis());
+            
+            int daysRelativeTodayStartTime=(timeItemIndex.getDayItemIndex()- TimeItemUtil.TODAY_WHEEL_VIEW_INDEX)*TimeItemUtil.DAY_INTERVAL;
+            long daysRelativeTodayStartTimeMillis=((long)daysRelativeTodayStartTime)*TimeUtil.HOUR_PER_DAY*TimeUtil.MINUTE_PER_HOUR*TimeUtil.SECOND_PER_MINUTE*TimeUtil.MILLISECOND_PER_SECOND;
+    
+            int hoursRelativeTodayStartTime=(timeItemIndex.getHourItemIndex()-0)*TimeItemUtil.HOUR_INTERVAL;
+            long hoursRelativeTodayStartTimeMillis=((long)hoursRelativeTodayStartTime)*TimeUtil.MINUTE_PER_HOUR*TimeUtil.SECOND_PER_MINUTE*TimeUtil.MILLISECOND_PER_SECOND;
+      
+            int minutesRelativeTodayStartTime=(timeItemIndex.getMinuteItemIndex()-0)*TimeItemUtil.MINUTE_INTERVAL;
+            long minutesRelativeTodayStartTimeMillis=((long)minutesRelativeTodayStartTime)*TimeUtil.SECOND_PER_MINUTE*TimeUtil.MILLISECOND_PER_SECOND;
+            
+            millis=todayStartTimeMillis+daysRelativeTodayStartTimeMillis+hoursRelativeTodayStartTimeMillis+minutesRelativeTodayStartTimeMillis;
+         /*   Log.i(TAG, "todayStartTimeMillis "+todayStartTimeMillis);
+            Log.i(TAG, "daysRelativeTodayStartTime "+daysRelativeTodayStartTime);
+            Log.i(TAG, "daysRelativeTodayStartTimeMillis "+daysRelativeTodayStartTimeMillis);
+            Log.i(TAG, "hoursRelativeTodayStartTime "+hoursRelativeTodayStartTime);
+            Log.i(TAG, "hoursRelativeTodayStartTimeMillis "+hoursRelativeTodayStartTimeMillis);
+            Log.i(TAG, "minutesRelativeTodayStartTime "+minutesRelativeTodayStartTime);
+            Log.i(TAG, "minutesRelativeTodayStartTimeMillis "+minutesRelativeTodayStartTimeMillis);
+            Log.i(TAG, "millis "+millis);
+          */            
+            break;
+
+        } while (false);
+        return millis;
+
+    }
+	
 	private static int getMinuteOfDay(final TimeItemIndex timeItemIndex){
 		
 		int minuteOfDay=((TimeItemUtil.HOUR_START_VALUE+timeItemIndex.getHourItemIndex()*TimeItemUtil.HOUR_INTERVAL)*(TimeUtil.MINUTE_PER_HOUR))+
