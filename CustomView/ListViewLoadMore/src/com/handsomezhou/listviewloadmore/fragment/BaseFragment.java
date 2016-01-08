@@ -1,4 +1,4 @@
-package com.handsomezhou.multiplelistitem.fragment;
+package com.handsomezhou.listviewloadmore.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.handsomezhou.multiplelistitem.util.ViewUtil;
+import com.handsomezhou.listviewloadmore.util.ViewUtil;
 
 public abstract class BaseFragment extends Fragment {
 	private Context mContext;

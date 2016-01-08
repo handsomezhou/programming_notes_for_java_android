@@ -1,4 +1,4 @@
-package com.handsomezhou.multiplelistitem.activity;
+package com.handsomezhou.listviewloadmore.activity;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.Window;
 
-import com.handsomezhou.multiplelistitem.R;
+import com.handsomezhou.listviewloadmore.R;
 
 public abstract class BaseSingleFragmentActivity extends FragmentActivity {
 	private Context mContext;

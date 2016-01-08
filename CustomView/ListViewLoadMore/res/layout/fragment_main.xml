@@ -4,10 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <ListView
-        android:id="@+id/shape_list_view"
+    <com.handsomezhou.listviewloadmore.view.LoadListView
+        android:id="@+id/contacts_list_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    </ListView>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.handsomezhou.multiplelistitem.util;
+package com.handsomezhou.listviewloadmore.util;
 
 import android.app.Activity;
 import android.text.Html;
