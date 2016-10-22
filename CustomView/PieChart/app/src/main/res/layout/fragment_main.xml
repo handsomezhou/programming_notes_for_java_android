@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:custom="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+
+    <com.handsomezhou.piechart.view.PieChart
+        android:id="@+id/Pie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="100"
+        android:background="@android:color/white"
+        android:padding="10dp"
+        custom:autoCenterPointerInSlice="true"
+        custom:highlightStrength="1.12"
+        custom:labelColor="@android:color/black"
+        custom:labelHeight="20dp"
+        custom:labelPosition="left"
+        custom:labelWidth="110dp"
+        custom:labelY="85dp"
+        custom:pieRotation="0"
+        custom:pointerRadius="4dp"
+        custom:showText="true"
+    />
+    <Button
+        android:id="@+id/reset_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/reset_button"
+    />
+
+</LinearLayout>
