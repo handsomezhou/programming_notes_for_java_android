@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <com.handsomezhou.demo.view.NavigationBarLayout
+        android:id="@+id/navigation_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/navigation_bar_layout" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/app_info_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/icon_image_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin"
+                    android:background="@mipmap/ic_launcher"
+                    android:contentDescription="@string/app_name" />
+
+                <TextView
+                    android:id="@+id/app_name_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin"
+                    android:gravity="center"
+                    android:text="@string/app_name"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/prompt_large_text_size" />
+
+                <TextView
+                    android:id="@+id/version_info_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin"
+                    android:gravity="center"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/prompt_normal_text_size" />
+            </LinearLayout>
+
+            <View style="@style/dividing_line_horizontal" />
+
+            <LinearLayout
+                android:id="@+id/check_new_version_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/list_item_height"
+                android:visibility="gone"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/check_new_version_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin"
+                    android:padding="@dimen/padding"
+                    android:text="@string/check_new_version"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/prompt_normal_text_size" />
+
+            </LinearLayout>
+
+
+            <View style="@style/dividing_line_horizontal" />
+
+
+            <LinearLayout
+                android:id="@+id/reference_project_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/list_item_height"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/reference_project_text_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin"
+                    android:layout_weight="1"
+                    android:padding="@dimen/padding"
+                    android:text="@string/reference_project"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/prompt_normal_text_size" />
+
+                <ImageView
+                    android:id="@+id/to_image_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/margin_right4x"
+                    android:background="@mipmap/to" />
+            </LinearLayout>
+
+
+            <View
+                style="@style/dividing_line_horizontal"/>
+
+            <LinearLayout
+                android:id="@+id/device_id_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/list_item_height"
+                android:orientation="horizontal"
+                android:visibility="visible" >
+
+                <TextView
+                    android:id="@+id/device_id_prompt_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin"
+                    android:padding="@dimen/padding"
+                    android:text="@string/device_id"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/prompt_normal_text_size" />
+
+                <TextView
+                    android:id="@+id/device_id_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/prompt_small_text_size" />
+
+            </LinearLayout>
+
+            <View
+                style="@style/dividing_line_horizontal"/>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

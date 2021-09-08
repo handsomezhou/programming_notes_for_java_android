@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- start: Reference project(open source project&non-open source project) -->
+    <string-array name="reference_project">
+         <item>{\"project_name\": \"android-segmented-control\",\"project_address\":\"https://github.com/hoang8f/android-segmented-control\", \"whether_open_source\":true}</item>
+
+        <item>{\"project_name\": \"CommonTools\",\"project_address\":\"https://github.com/handsomezhou/CommonTools\", \"whether_open_source\":true}</item>
+
+
+        <!--        <item>{\"project_name\": \"gson\",\"project_address\":\"https://github.com/google/gson\", \"whether_open_source\":true}</item>
+        -->
+
+        <item>{\"project_name\": \"recycler-fast-scroll\",\"project_address\":\"https://github.com/FutureMind/recycler-fast-scroll\", \"whether_open_source\":true}</item>
+        <item>{\"project_name\": \"retrofit\",\"project_address\":\"https://github.com/square/retrofit\", \"whether_open_source\":true}</item>
+        <item>{\"project_name\": \"SwipeToLoadLayout\",\"project_address\":\"https://github.com/Aspsine/SwipeToLoadLayout\", \"whether_open_source\":true}</item>
+        <item>{\"project_name\": \"SwitchButton\",\"project_address\":\"https://github.com/kyleduo/SwitchButton\", \"whether_open_source\":true}</item>
+
+
+    </string-array>
+    <!-- end: open source project -->
+
+
+    <!-- start: version info -->
+    <string-array name="version_info">
+        <item>{\"id\": 1, \"versionCode\":\"1\",\"versionName\":\"1.1.1\",\"upgradeInfo\":\"1.初始Demo项目\",\"remark\":\"2021-09-08\"}</item>
+    </string-array>
+    <!-- end: version info -->
+
+
+</resources>

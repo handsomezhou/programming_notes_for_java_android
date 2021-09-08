@@ -1,0 +1,104 @@
+<resources>
+    <string name="app_name">Demo</string>
+    <string name="action_settings">Settings</string>
+    <string name="birthday">2021-09-08</string>
+    <string name="the_year_of_the_birthday">2021</string>
+
+    <!-- start:start page -->
+    <string name="app_name_of_english">Demo</string>
+    <string name="android_version">Android版</string>
+    <string name="copyright_info" formatted="false">Copyright © %d - %d XXX公司. All Rights Reserved</string>
+    <!-- start:start page -->
+
+    <!-- start:home page -->
+    <string name="home_page">主页</string>
+    <string name="more">更多</string>
+    <!-- end:home page -->
+
+
+    <!-- start: more -->
+    <string name="settings">设置</string>
+    <string name="about">关于</string>
+    <!-- end: more -->
+
+
+    <!-- start: about -->
+    <!--<string name="about">关于</string>-->
+    <string name="version_info">版本信息</string>
+    <!--<string name="android_version">Android版</string>-->
+    <string name="colon">:</string>
+    <string name="check_new_version">检查新版本</string>
+
+    <string name="device_id">设备Id</string>
+    <string name="share_device_id">分享设备Id</string>
+    <string name="copy_device_id_success">复制设备Id成功</string>
+    <!-- end: about -->
+
+    <!-- start: reference project -->
+    <string name="reference_project">引用项目</string>
+    <!-- end: reference project -->
+
+
+    <!-- start: share -->
+    <string name="share_tips">扫码下载\"Demo\"\n点击图片或文字可分享\n\n安装密码 Demo</string>
+    <string name="please_select">请选择</string>
+    <string name="wechat_not_installed">未安装微信,请先安装微信</string>
+    <string name="qq_not_installed">未安装QQ</string>
+    <string name="stock_analysis_app_not_installed">未安装股票分析软件</string>
+    <string name="stock_trade_app_not_installed">未安装股票交易软件</string>
+    <string name="tencent_micro_bo_not_installed">未安装腾讯微博</string>
+    <string name="sina_micro_bo_not_installed">未安装新浪微博</string>
+    <string name="copy_email_success">邮箱已复制.</string>
+    <string name="copy_qq_group_success">QQ群号已复制,可打开QQ添加群.</string>
+    <string name="copy_wechat_public_number_success">微信公众号已复制,可打开微信进行关注.</string>
+    <string name="copy_weibo_success">新浪微博帐号已复制,可打开新浪微博进行关注.</string>
+
+
+    <string name="share">分享</string>
+    <string name="new_add">新增</string>
+    <string name="update">更新</string>
+    <string name="view">查看</string>
+    <string name="uuid">UUID</string>
+    <string name="condition_uuid">CUUID</string>
+    <string name="reload">重新加载</string>
+    <string name="copy">复制</string>
+    <string name="data">数据</string>
+    <string name="paste">粘贴</string>
+    <string name="copy_success">复制成功</string>
+    <string name="paste_success">粘贴成功</string>
+    <string name="no_data_can_share">无数据可分享</string>
+    <string name="no_data_can_copy">无数据可复制</string>
+
+    <string name="copy_stock_name_and_code_success">%s已复制</string>
+    <string name="copy_stock_name_success">%s已复制</string>
+    <string name="copy_stock_code_success">%s已复制</string>
+    <string name="copy_content_success">复制\"%s\"成功</string>
+    <string name="copy_content_is_empty">复制内容为空</string>
+    <string name="content_can_not_be_empty">内容不能为空</string>
+    <string name="no_paste_content">无粘贴内容</string>
+    <string name="no_data_to_paste">无数据可粘贴</string>
+    <string name="no_valid_data_to_paste">无有效数据可粘贴</string>
+    <string name="unable_to_parse_the_content">无法解析内容</string>
+    <!-- end: share -->
+
+    <!-- Start: common dialog -->
+    <string name="common_ok">确定</string>
+    <string name="common_cancel">取消</string>
+    <!-- End: common dialog -->
+
+    <!-- start: search_mode -->
+    <string name="search_mode">搜索方式</string>
+    <string name="t9">T9</string>
+    <string name="qwerty">全键盘</string>
+    <!-- end: search_mode -->
+    <string name="search_data_count_show">搜索数据数量显示</string>
+    <string name="app_share_show">应用分享显示</string>
+    <string name="help_show">帮助显示</string>
+    <string name="data_count">(%d)</string>
+
+
+    <!-- start: exit_app_prompt_mode -->
+    <string name="whether_prompt_exit_app">退出应用时提示</string>
+    <string name="double_back_press_exit_app">再按一次退出%s</string>
+    <!-- end: exit_app_prompt_mode -->
+</resources>
